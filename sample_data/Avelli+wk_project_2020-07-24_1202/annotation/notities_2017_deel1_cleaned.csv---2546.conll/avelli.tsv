@@ -3,47 +3,47 @@
 #T_RL=webanno.custom.Relation|BT_webanno.custom.Token				
 				
 				
-#Text=Op dd-mm-jjjj zag ik bovengenoemde patiënt op de polikliniek radiotherapie van het ziekenhuis .				
-1-1	0-2	Op	type\_Background[1]	_
-1-2	3-13	Dd-mm-jjjj	type\_Background[1]	_
-1-3	14-17	zag	type\_Background[1]	_
-1-4	18-20	ik	type\_Background[1]	_
-1-5	21-34	bovengenoemde	type\_Background[1]	_
-1-6	35-42	patiënt	type\_Background[1]	_
-1-7	43-45	op	type\_Background[1]	_
-1-8	46-48	de	type\_Background[1]	_
-1-9	49-60	polikliniek	type\_Background[1]	_
-1-10	61-74	radiotherapie	type\_Background[1]	_
-1-11	75-78	van	type\_Background[1]	_
-1-12	79-82	het	type\_Background[1]	_
-1-13	83-87	ziekenhuis	type\_Background[1]	_
-1-14	88-89	.	_	_
+#Text=Op dd-mm-jjjj zag ik bovengenoemde pati�nt op de polikliniek radiotherapie van het ziekenhuis .				
+01/Jan	0-2	Op	type\_Background[1]	_
+01/Feb	Mar/13	Dd-mm-jjjj	type\_Background[1]	_
+01/Mar	14-17	zag	type\_Background[1]	_
+01/Apr	18-20	ik	type\_Background[1]	_
+01/May	21-34	bovengenoemde	type\_Background[1]	_
+01/Jun	35-42	pati�nt	type\_Background[1]	_
+01/Jul	43-45	op	type\_Background[1]	_
+01/Aug	46-48	de	type\_Background[1]	_
+01/Sep	49-60	polikliniek	type\_Background[1]	_
+01/Oct	61-74	radiotherapie	type\_Background[1]	_
+01/Nov	75-78	van	type\_Background[1]	_
+01/Dec	79-82	het	type\_Background[1]	_
+Jan/13	83-87	ziekenhuis	type\_Background[1]	_
+Jan/14	88-89	.	_	_
 				
 #Text=80 mg prednison als gevolg van ipi/nivo DM door prednisolon jjjj/mm : lopen				
-2-1	1781-1783	80	type\_Background[2]	_
-2-2	1784-1786	mg	type\_Background[2]	_
-2-3	1787-1796	prednison	type\_Background[2]	_
-2-4	1797-1800	als	type\_Background[2]	_
-2-5	1801-1807	gevolg	type\_Background[2]	_
-2-6	1808-1811	van	type\_Background[2]	_
-2-7	1812-1820	ipi/nivo	type\_Background[2]	_
-2-8	1821-1823	DM	type\_Background[2]	_
-2-9	1824-1828	door	type\_Background[2]	_
-2-10	1829-1840	prednisolon	type\_Background[2]	_
-2-11	1841-1848	jjjj/mm	type\_Background[2]	_
-2-12	1849-1850	:	type\_Background[2]	_
-2-13	1851-1856	lopen	type\_Background[2]|.D450: Lopen en zich verplaatsen[3]	_
+02/Jan	1781-1783	80	type\_Background[2]	_
+02/Feb	1784-1786	mg	type\_Background[2]	_
+02/Mar	1787-1796	prednison	type\_Background[2]	_
+02/Apr	1797-1800	als	type\_Background[2]	_
+02/May	1801-1807	gevolg	type\_Background[2]	_
+02/Jun	1808-1811	van	type\_Background[2]	_
+02/Jul	1812-1820	ipi/nivo	type\_Background[2]	_
+02/Aug	1821-1823	DM	type\_Background[2]	_
+02/Sep	1824-1828	door	type\_Background[2]	_
+02/Oct	1829-1840	prednisolon	type\_Background[2]	_
+02/Nov	1841-1848	jjjj/mm	type\_Background[2]	_
+02/Dec	1849-1850	:	type\_Background[2]	_
+Feb/13	1851-1856	lopen	type\_Background[2]|.D450: Lopen en zich verplaatsen[3]	_
 				
 #Text=moeizamer , blinde vlek en meerdere malen gevallen .				
-3-1	1857-1866	moeizamer	type\_Background[2]|.D450: Lopen en zich verplaatsen[3]	_
-3-2	1867-1868	,	type\_Background[2]	_
-3-3	1869-1875	blinde	type\_Background[2]	_
-3-4	1876-1880	vlek	type\_Background[2]	_
-3-5	1881-1883	en	type\_Background[2]	_
-3-6	1884-1892	meerdere	type\_Background[2]	_
-3-7	1893-1898	malen	type\_Background[2]	_
-3-8	1899-1907	gevallen	type\_Background[2]	_
-3-9	1908-1909	.	type\_Background[2]	_
+03/Jan	1857-1866	moeizamer	type\_Background[2]|.D450: Lopen en zich verplaatsen[3]	_
+03/Feb	1867-1868	,	type\_Background[2]	_
+03/Mar	1869-1875	blinde	type\_Background[2]	_
+03/Apr	1876-1880	vlek	type\_Background[2]	_
+03/May	1881-1883	en	type\_Background[2]	_
+03/Jun	1884-1892	meerdere	type\_Background[2]	_
+03/Jul	1893-1898	malen	type\_Background[2]	_
+03/Aug	1899-1907	gevallen	type\_Background[2]	_
+03/Sep	1908-1909	.	type\_Background[2]	_
 				
 				
 				
@@ -388,1038 +388,818 @@
 				
 				
 				
-#Text=proefbehandeling naar prednisolon 20 mg en later dexamethason 2dd2 mg				
-48-1	1910-1926	proefbehandeling	type\_Background[2]	_
-48-2	1927-1931	naar	type\_Background[2]	_
-48-3	1932-1943	prednisolon	type\_Background[2]	_
-48-4	1944-1946	20	type\_Background[2]	_
-48-5	1947-1949	mg	type\_Background[2]	_
-48-6	1950-1952	en	type\_Background[2]	_
-48-7	1953-1958	later	type\_Background[2]	_
-48-8	1959-1971	dexamethason	type\_Background[2]	_
-48-9	1972-1976	2dd2	type\_Background[2]	_
-48-10	1977-1979	mg	type\_Background[2]	_
 				
-#Text=Recente ontwikkelingen				
-49-1	1980-1987	Recente	_	_
-49-2	1988-2002	ontwikkelingen	_	_
 				
-#Text=Patiënt is op 21-11-2017 opgenomen met verdere neurologische achteruitgang .				
-50-1	2003-2010	Patiënt	_	_
-50-2	2011-2013	is	_	_
-50-3	2014-2016	op	_	_
-50-4	2017-2027	21-11-2017	_	_
-50-5	2028-2037	opgenomen	_	_
-50-6	2038-2041	met	_	_
-50-7	2042-2049	verdere	_	_
-50-8	2050-2063	neurologische	_	_
-50-9	2064-2077	achteruitgang	_	_
-50-10	2078-2079	.	_	_
 				
-#Text=Op een nieuwe MRI hersenen van 23-11 wordt progressie van 3 hersenmetastasen rechts gezien .				
-51-1	2080-2082	Op	_	_
-51-2	2083-2086	een	_	_
-51-3	2087-2093	nieuwe	_	_
-51-4	2094-2097	MRI	_	_
-51-5	2098-2106	hersenen	_	_
-51-6	2107-2110	van	_	_
-51-7	2111-2116	23-11	_	_
-51-8	2117-2122	wordt	_	_
-51-9	2123-2133	progressie	_	_
-51-10	2134-2137	van	_	_
-51-11	2138-2139	3	_	_
-51-12	2140-2156	hersenmetastasen	_	_
-51-13	2157-2163	rechts	_	_
-51-14	2164-2170	gezien	_	_
-51-15	2171-2172	.	_	_
 				
-#Text=Na bespreking in het multidisciplinair neuro-oncologie overleg werd besloten tot stereotactische bestraling van de hersenmetastasen , mits patiënt in voldoende conditie is ( KPS 70 , WHO 0-1 ) , en er geen overlap was met de eerdere radiochirurgie in het MCA .				
-52-1	2173-2175	Na	_	_
-52-2	2176-2186	bespreking	_	_
-52-3	2187-2189	in	_	_
-52-4	2190-2193	het	_	_
-52-5	2194-2211	multidisciplinair	_	_
-52-6	2212-2227	neuro-oncologie	_	_
-52-7	2228-2235	overleg	_	_
-52-8	2236-2240	werd	_	_
-52-9	2241-2249	besloten	_	_
-52-10	2250-2253	tot	_	_
-52-11	2254-2269	stereotactische	_	_
-52-12	2270-2280	bestraling	_	_
-52-13	2281-2284	van	_	_
-52-14	2285-2287	de	_	_
-52-15	2288-2304	hersenmetastasen	_	_
-52-16	2305-2306	,	_	_
-52-17	2307-2311	mits	_	_
-52-18	2312-2319	patiënt	_	_
-52-19	2320-2322	in	_	_
-52-20	2323-2332	voldoende	_	_
-52-21	2333-2341	conditie	_	_
-52-22	2342-2344	is	_	_
-52-23	2345-2346	(	_	_
-52-24	2347-2350	KPS	_	_
-52-25	2351-2353	70	_	_
-52-26	2354-2355	,	_	_
-52-27	2356-2359	WHO	_	_
-52-28	2360-2363	0-1	_	_
-52-29	2364-2365	)	_	_
-52-30	2366-2367	,	_	_
-52-31	2368-2370	en	_	_
-52-32	2371-2373	er	_	_
-52-33	2374-2378	geen	_	_
-52-34	2379-2386	overlap	_	_
-52-35	2387-2390	was	_	_
-52-36	2391-2394	met	_	_
-52-37	2395-2397	de	_	_
-52-38	2398-2405	eerdere	_	_
-52-39	2406-2420	radiochirurgie	_	_
-52-40	2421-2423	in	_	_
-52-41	2424-2427	het	_	_
-52-42	2428-2431	MCA	_	_
-52-43	2432-2433	.	_	_
 				
-#Text=Anamnese				
-53-1	2434-2442	Anamnese	_	_
 				
-#Text=Na operatie december gerevalideerd in Heliomare , daarna klein beetje herstel van functie linker lichaamshelft .				
-54-1	2443-2445	Na	_	_
-54-2	2446-2454	operatie	_	_
-54-3	2455-2463	december	_	_
-54-4	2464-2477	gerevalideerd	_	_
-54-5	2478-2480	in	_	_
-54-6	2481-2490	Heliomare	_	_
-54-7	2491-2492	,	_	_
-54-8	2493-2499	daarna	_	_
-54-9	2500-2505	klein	_	_
-54-10	2506-2512	beetje	_	_
-54-11	2513-2520	herstel	_	_
-54-12	2521-2524	van	_	_
-54-13	2525-2532	functie	_	_
-54-14	2533-2539	linker	_	_
-54-15	2540-2553	lichaamshelft	_	_
-54-16	2554-2555	.	_	_
 				
-#Text=Afgelopen maanden aantal keer gevallen .				
-55-1	2556-2565	Afgelopen	_	_
-55-2	2566-2573	maanden	_	_
-55-3	2574-2580	aantal	_	_
-55-4	2581-2585	keer	_	_
-55-5	2586-2594	gevallen	_	_
-55-6	2595-2596	.	_	_
 				
-#Text=27-8 van trap .				
-56-1	2597-2601	27-8	_	_
-56-2	2602-2605	van	_	_
-56-3	2606-2610	trap	_	_
-56-4	2611-2612	.	_	_
 				
-#Text=Op 14 september meteen buiten garage met elektrische fiets gevallen .				
-57-1	2613-2615	Op	_	_
-57-2	2616-2618	14	_	_
-57-3	2619-2628	september	_	_
-57-4	2629-2635	meteen	_	_
-57-5	2636-2642	buiten	_	_
-57-6	2643-2649	garage	_	_
-57-7	2650-2653	met	_	_
-57-8	2654-2665	elektrische	_	_
-57-9	2666-2671	fiets	_	_
-57-10	2672-2680	gevallen	_	_
-57-11	2681-2682	.	_	_
 				
-#Text=Enorm hematoom in rechter been ontwikkeld , in totaal 8 PC gehad .				
-58-1	2683-2688	Enorm	_	_
-58-2	2689-2697	hematoom	_	_
-58-3	2698-2700	in	_	_
-58-4	2701-2708	rechter	_	_
-58-5	2709-2713	been	_	_
-58-6	2714-2724	ontwikkeld	_	_
-58-7	2725-2726	,	_	_
-58-8	2727-2729	in	_	_
-58-9	2730-2736	totaal	_	_
-58-10	2737-2738	8	_	_
-58-11	2739-2741	PC	_	_
-58-12	2742-2747	gehad	_	_
-58-13	2748-2749	.	_	_
 				
-#Text=Nadien conditie erg verslechterd .				
-59-1	2750-2756	Nadien	_	_
-59-2	2757-2765	conditie	_	_
-59-3	2766-2769	erg	_	_
-59-4	2770-2782	verslechterd	_	_
-59-5	2783-2784	.	_	_
 				
-#Text=Kon zich thuis sinds die val al niet niet meer redden :				
-60-1	2785-2788	Kon	_	_
-60-2	2789-2793	zich	_	_
-60-3	2794-2799	thuis	_	_
-60-4	2800-2805	sinds	_	_
-60-5	2806-2809	die	_	_
-60-6	2810-2813	val	_	_
-60-7	2814-2816	al	_	_
-60-8	2817-2821	niet	_	_
-60-9	2822-2826	niet	_	_
-60-10	2827-2831	meer	_	_
-60-11	2832-2838	redden	_	_
-60-12	2839-2840	:	_	_
 				
-#Text=Was een heel schema met vrienden en familie die steeds aanwezig waren en wijkverpleging 2 x per dag .				
-61-1	2841-2844	Was	_	_
-61-2	2845-2848	een	_	_
-61-3	2849-2853	heel	_	_
-61-4	2854-2860	schema	_	_
-61-5	2861-2864	met	_	_
-61-6	2865-2873	vrienden	_	_
-61-7	2874-2876	en	_	_
-61-8	2877-2884	familie	_	_
-61-9	2885-2888	die	_	_
-61-10	2889-2895	steeds	_	_
-61-11	2896-2904	aanwezig	_	_
-61-12	2905-2910	waren	_	_
-61-13	2911-2913	en	_	_
-61-14	2914-2928	wijkverpleging	_	_
-61-15	2929-2930	2	_	_
-61-16	2931-2932	x	_	_
-61-17	2933-2936	per	_	_
-61-18	2937-2940	dag	_	_
-61-19	2941-2942	.	_	_
 				
-#Text=Sindsdien dus niet meer ADL zelfstandig , gebruikte plasfles .				
-62-1	2943-2952	Sindsdien	_	_
-62-2	2953-2956	dus	_	_
-62-3	2957-2961	niet	_	_
-62-4	2962-2966	meer	_	_
-62-5	2967-2970	ADL	_	_
-62-6	2971-2982	zelfstandig	_	_
-62-7	2983-2984	,	_	_
-62-8	2985-2994	gebruikte	_	_
-62-9	2995-3003	plasfles	_	_
-62-10	3004-3005	.	_	_
 				
-#Text=Met def wachten tot thuiszorg of familie weer kwam , kon niets zelfstandig .				
-63-1	3006-3009	Met	_	_
-63-2	3010-3013	def	_	_
-63-3	3014-3021	wachten	_	_
-63-4	3022-3025	tot	_	_
-63-5	3026-3035	thuiszorg	_	_
-63-6	3036-3038	of	_	_
-63-7	3039-3046	familie	_	_
-63-8	3047-3051	weer	_	_
-63-9	3052-3056	kwam	_	_
-63-10	3057-3058	,	_	_
-63-11	3059-3062	kon	_	_
-63-12	3063-3068	niets	_	_
-63-13	3069-3080	zelfstandig	_	_
-63-14	3081-3082	.	_	_
 				
-#Text=De prednison is kort voor opname ( 17-11 ) vervangen door dexamethason 2 x 2 mg , heeft nu sinds opname 2 x 4 mg .				
-64-1	3083-3085	De	_	_
-64-2	3086-3095	prednison	_	_
-64-3	3096-3098	is	_	_
-64-4	3099-3103	kort	_	_
-64-5	3104-3108	voor	_	_
-64-6	3109-3115	opname	_	_
-64-7	3116-3117	(	_	_
-64-8	3118-3123	17-11	_	_
-64-9	3124-3125	)	_	_
-64-10	3126-3135	vervangen	_	_
-64-11	3136-3140	door	_	_
-64-12	3141-3153	dexamethason	_	_
-64-13	3154-3155	2	_	_
-64-14	3156-3157	x	_	_
-64-15	3158-3159	2	_	_
-64-16	3160-3162	mg	_	_
-64-17	3163-3164	,	_	_
-64-18	3165-3170	heeft	_	_
-64-19	3171-3173	nu	_	_
-64-20	3174-3179	sinds	_	_
-64-21	3180-3186	opname	_	_
-64-22	3187-3188	2	_	_
-64-23	3189-3190	x	_	_
-64-24	3191-3192	4	_	_
-64-25	3193-3195	mg	_	_
-64-26	3196-3197	.	_	_
 				
-#Text=Linker been de afgelopen dagen weer meer kracht , denkt zelf dat hij wel weer zelf transfers kan maken .				
-65-1	3198-3204	Linker	_	_
-65-2	3205-3209	been	_	_
-65-3	3210-3212	de	_	_
-65-4	3213-3222	afgelopen	_	_
-65-5	3223-3228	dagen	_	_
-65-6	3229-3233	weer	_	_
-65-7	3234-3238	meer	_	_
-65-8	3239-3245	kracht	_	_
-65-9	3246-3247	,	_	_
-65-10	3248-3253	denkt	_	_
-65-11	3254-3258	zelf	_	_
-65-12	3259-3262	dat	_	_
-65-13	3263-3266	hij	_	_
-65-14	3267-3270	wel	_	_
-65-15	3271-3275	weer	_	_
-65-16	3276-3280	zelf	_	_
-65-17	3281-3290	transfers	_	_
-65-18	3291-3294	kan	_	_
-65-19	3295-3300	maken	_	_
-65-20	3301-3302	.	_	_
 				
-#Text=Staan alleen dingen in de weg , partner denkt dat hij thuis het niet redt , want twee treetjes voor toilet .				
-66-1	3303-3308	Staan	_	_
-66-2	3309-3315	alleen	_	_
-66-3	3316-3322	dingen	_	_
-66-4	3323-3325	in	_	_
-66-5	3326-3328	de	_	_
-66-6	3329-3332	weg	_	_
-66-7	3333-3334	,	_	_
-66-8	3335-3342	partner	_	_
-66-9	3343-3348	denkt	_	_
-66-10	3349-3352	dat	_	_
-66-11	3353-3356	hij	_	_
-66-12	3357-3362	thuis	_	_
-66-13	3363-3366	het	_	_
-66-14	3367-3371	niet	_	_
-66-15	3372-3376	redt	_	_
-66-16	3377-3378	,	_	_
-66-17	3379-3383	want	_	_
-66-18	3384-3388	twee	_	_
-66-19	3389-3397	treetjes	_	_
-66-20	3398-3402	voor	_	_
-66-21	3403-3409	toilet	_	_
-66-22	3410-3411	.	_	_
 				
-#Text=En denkt ook niet dat transfers kunnen lukken .				
-67-1	3412-3414	En	_	_
-67-2	3415-3420	denkt	_	_
-67-3	3421-3424	ook	_	_
-67-4	3425-3429	niet	_	_
-67-5	3430-3433	dat	_	_
-67-6	3434-3443	transfers	_	_
-67-7	3444-3450	kunnen	_	_
-67-8	3451-3457	lukken	_	_
-67-9	3458-3459	.	_	_
 				
-#Text=Zou thuis ook niet van bed naar toilet kunnen lopen , kan ook niet trap lopen .				
-68-1	3460-3463	Zou	view\_Third party[4]	_
-68-2	3464-3469	thuis	view\_Third party[4]	_
-68-3	3470-3473	ook	view\_Third party[4]	_
-68-4	3474-3478	niet	view\_Third party[4]|FAC 0[5]	_
-68-5	3479-3482	van	view\_Third party[4]|FAC 0[5]	_
-68-6	3483-3486	bed	view\_Third party[4]|FAC 0[5]	_
-68-7	3487-3491	naar	view\_Third party[4]|FAC 0[5]	_
-68-8	3492-3498	toilet	view\_Third party[4]|FAC 0[5]	_
-68-9	3499-3505	kunnen	view\_Third party[4]|FAC 0[5]	_
-68-10	3506-3511	lopen	view\_Third party[4]|.D450: Lopen en zich verplaatsen[6]	68-4[5_6]
-68-11	3512-3513	,	view\_Third party[4]	_
-68-12	3514-3517	kan	view\_Third party[4]	_
-68-13	3518-3521	ook	view\_Third party[4]	_
-68-14	3522-3526	niet	view\_Third party[4]	_
-68-15	3527-3531	trap	view\_Third party[4]	_
-68-16	3532-3537	lopen	view\_Third party[4]	_
-68-17	3538-3539	.	_	_
 				
-#Text=Denkt ook zelf niet naar huis te kunnen .				
-69-1	3540-3545	Denkt	_	_
-69-2	3546-3549	ook	_	_
-69-3	3550-3554	zelf	_	_
-69-4	3555-3559	niet	_	_
-69-5	3560-3564	naar	_	_
-69-6	3565-3569	huis	_	_
-69-7	3570-3572	te	_	_
-69-8	3573-3579	kunnen	_	_
-69-9	3580-3581	.	_	_
 				
-#Text=Situatie met uitval linker lichaamshelft is nu nog gecompliceerd door mogelijk een kwadrantanopsie .				
-70-1	3582-3590	Situatie	_	_
-70-2	3591-3594	met	_	_
-70-3	3595-3601	uitval	_	_
-70-4	3602-3608	linker	_	_
-70-5	3609-3622	lichaamshelft	_	_
-70-6	3623-3625	is	_	_
-70-7	3626-3628	nu	_	_
-70-8	3629-3632	nog	_	_
-70-9	3633-3646	gecompliceerd	_	_
-70-10	3647-3651	door	_	_
-70-11	3652-3660	mogelijk	_	_
-70-12	3661-3664	een	_	_
-70-13	3665-3680	kwadrantanopsie	_	_
-70-14	3681-3682	.	_	_
 				
-#Text=Fysiotherapie				
-71-1	3683-3696	Fysiotherapie	_	_
 				
-#Text=28-11 : kan zelfstandig staan , transfers en lopen onder begeleiding .				
-72-1	3697-3702	28-11	_	_
-72-2	3703-3704	:	_	_
-72-3	3705-3708	kan	_	_
-72-4	3709-3720	zelfstandig	_	_
-72-5	3721-3726	staan	_	_
-72-6	3727-3728	,	_	_
-72-7	3729-3738	transfers	_	_
-72-8	3739-3741	en	_	_
-72-9	3742-3747	lopen	.D450: Lopen en zich verplaatsen	72-10[7_0]
-72-10	3748-3753	onder	FAC 1[7]	_
-72-11	3754-3765	begeleiding	FAC 1[7]	_
-72-12	3766-3767	.	_	_
 				
-#Text=Verpleging :				
-73-1	3768-3778	Verpleging	_	_
-73-2	3779-3780	:	_	_
 				
-#Text=heden :				
-74-1	3781-3786	heden	_	_
-74-2	3787-3788	:	_	_
 				
-#Text=kan zich niet zelf wassen .				
-75-1	3789-3792	kan	_	_
-75-2	3793-3797	zich	_	_
-75-3	3798-3802	niet	_	_
-75-4	3803-3807	zelf	_	_
-75-5	3808-3814	wassen	_	_
-75-6	3815-3816	.	_	_
 				
-#Text=Medicatie				
-76-1	3817-3826	Medicatie	_	_
 				
-#Text=Dexamethason 2 x 4 mg .				
-77-1	3827-3839	Dexamethason	_	_
-77-2	3840-3841	2	_	_
-77-3	3842-3843	x	_	_
-77-4	3844-3845	4	_	_
-77-5	3846-3848	mg	_	_
-77-6	3849-3850	.	_	_
 				
-#Text=Sociale anamnese				
-78-1	3851-3858	Sociale	_	_
-78-2	3859-3867	anamnese	_	_
 				
-#Text=Sinds 15 jaar partner , eerste echtgenote overleden aan CVA op haar 45ste in 2001 , zoon van nu 32 jaar .				
-79-1	3868-3873	Sinds	_	_
-79-2	3874-3876	15	_	_
-79-3	3877-3881	jaar	_	_
-79-4	3882-3889	partner	_	_
-79-5	3890-3891	,	_	_
-79-6	3892-3898	eerste	_	_
-79-7	3899-3909	echtgenote	_	_
-79-8	3910-3919	overleden	_	_
-79-9	3920-3923	aan	_	_
-79-10	3924-3927	CVA	_	_
-79-11	3928-3930	op	_	_
-79-12	3931-3935	haar	_	_
-79-13	3936-3941	45ste	_	_
-79-14	3942-3944	in	_	_
-79-15	3945-3949	2001	_	_
-79-16	3950-3951	,	_	_
-79-17	3952-3956	zoon	_	_
-79-18	3957-3960	van	_	_
-79-19	3961-3963	nu	_	_
-79-20	3964-3966	32	_	_
-79-21	3967-3971	jaar	_	_
-79-22	3972-3973	.	_	_
 				
-#Text=Lichamelijk onderzoek				
-80-1	3974-3985	Lichamelijk	_	_
-80-2	3986-3995	onderzoek	_	_
 				
-#Text=Patient in bed , paralyse linker				
-81-1	3996-4003	Patient	_	_
-81-2	4004-4006	in	_	_
-81-3	4007-4010	bed	_	_
-81-4	4011-4012	,	_	_
-81-5	4013-4021	paralyse	_	_
-81-6	4022-4028	linker	_	_
 				
-#Text=arm , parese linker				
-82-1	4029-4032	arm	_	_
-82-2	4033-4034	,	_	_
-82-3	4035-4041	parese	_	_
-82-4	4042-4048	linker	_	_
 				
-#Text=been .				
-83-1	4049-4053	been	_	_
-83-2	4054-4055	.	_	_
 				
-#Text=KPS				
-84-1	4056-4059	KPS	_	_
 				
-#Text=40-50				
-85-1	4060-4065	40-50	_	_
 				
-#Text=·				
-86-1	4066-4067	·	_	_
 				
-#Text=50 –				
-87-1	4068-4070	50	_	_
-87-2	4071-4072	–	_	_
 				
-#Text=Requires considerable assistance and frequent medical care .				
-88-1	4073-4081	Requires	_	_
-88-2	4082-4094	considerable	_	_
-88-3	4095-4105	assistance	_	_
-88-4	4106-4109	and	_	_
-88-5	4110-4118	frequent	_	_
-88-6	4119-4126	medical	_	_
-88-7	4127-4131	care	_	_
-88-8	4132-4133	.	_	_
 				
-#Text=·				
-89-1	4134-4135	·	_	_
 				
-#Text=40 – Disabled , requires				
-90-1	4136-4138	40	_	_
-90-2	4139-4140	–	_	_
-90-3	4141-4149	Disabled	_	_
-90-4	4150-4151	,	_	_
-90-5	4152-4160	requires	_	_
 				
-#Text=special care and assistance .				
-91-1	4161-4168	special	_	_
-91-2	4169-4173	care	_	_
-91-3	4174-4177	and	_	_
-91-4	4178-4188	assistance	_	_
-91-5	4189-4190	.	_	_
 				
-#Text=WHO				
-92-1	4191-4194	WHO	_	_
 				
-#Text=3-4				
-93-1	4195-4198	3-4	_	_
 				
-#Text=· 3 –				
-94-1	4199-4200	·	_	_
-94-2	4201-4202	3	_	_
-94-3	4203-4204	–	_	_
 				
-#Text=Symptomatic , > 50% in bed , but				
-95-1	4205-4216	Symptomatic	_	_
-95-2	4217-4218	,	_	_
-95-3	4219-4220	>	_	_
-95-4	4221-4224	50%	_	_
-95-5	4225-4227	in	_	_
-95-6	4228-4231	bed	_	_
-95-7	4232-4233	,	_	_
-95-8	4234-4237	but	_	_
 				
-#Text=not bedbound ( Capable of only				
-96-1	4238-4241	not	_	_
-96-2	4242-4250	bedbound	_	_
-96-3	4251-4252	(	_	_
-96-4	4253-4260	Capable	_	_
-96-5	4261-4263	of	_	_
-96-6	4264-4268	only	_	_
 				
-#Text=limited self-care , confined to bed or chair 50%				
-97-1	4269-4276	limited	_	_
-97-2	4277-4286	self-care	_	_
-97-3	4287-4288	,	_	_
-97-4	4289-4297	confined	_	_
-97-5	4298-4300	to	_	_
-97-6	4301-4304	bed	_	_
-97-7	4305-4307	or	_	_
-97-8	4308-4313	chair	_	_
-97-9	4314-4317	50%	_	_
 				
-#Text=or more of waking				
-98-1	4318-4320	or	_	_
-98-2	4321-4325	more	_	_
-98-3	4326-4328	of	_	_
-98-4	4329-4335	waking	_	_
 				
-#Text=hours )				
-99-1	4336-4341	hours	_	_
-99-2	4342-4343	)	_	_
 				
-#Text=·				
-100-1	4344-4345	·	_	_
 				
-#Text=4 –				
-101-1	4346-4347	4	_	_
-101-2	4348-4349	–	_	_
 				
-#Text=Bedbound ( Completely disabled .				
-102-1	4350-4358	Bedbound	_	_
-102-2	4359-4360	(	_	_
-102-3	4361-4371	Completely	_	_
-102-4	4372-4380	disabled	_	_
-102-5	4381-4382	.	_	_
 				
-#Text=Cannot carry on any self-care .				
-103-1	4383-4389	Cannot	_	_
-103-2	4390-4395	carry	_	_
-103-3	4396-4398	on	_	_
-103-4	4399-4402	any	_	_
-103-5	4403-4412	self-care	_	_
-103-6	4413-4414	.	_	_
 				
-#Text=Totally confined to bed or chair )				
-104-1	4415-4422	Totally	_	_
-104-2	4423-4431	confined	_	_
-104-3	4432-4434	to	_	_
-104-4	4435-4438	bed	_	_
-104-5	4439-4441	or	_	_
-104-6	4442-4447	chair	_	_
-104-7	4448-4449	)	_	_
 				
-#Text=Beeldvorming				
-105-1	4450-4462	Beeldvorming	_	_
 				
-#Text=MRI-hersenen				
-106-1	4463-4475	MRI-hersenen	_	_
 				
-#Text=23-11-2017 :				
-107-1	4476-4486	23-11-2017	_	_
-107-2	4487-4488	:	_	_
 				
-#Text=Vergeleken met de scan van 11 september 2017 .				
-108-1	4489-4499	Vergeleken	_	_
-108-2	4500-4503	met	_	_
-108-3	4504-4506	de	_	_
-108-4	4507-4511	scan	_	_
-108-5	4512-4515	van	_	_
-108-6	4516-4518	11	_	_
-108-7	4519-4528	september	_	_
-108-8	4529-4533	2017	_	_
-108-9	4534-4535	.	_	_
 				
-#Text=Patiënt gescand volgens het neuro-oncologieprotocol met perfusie .				
-109-1	4536-4543	Patiënt	_	_
-109-2	4544-4551	gescand	_	_
-109-3	4552-4559	volgens	_	_
-109-4	4560-4563	het	_	_
-109-5	4564-4587	neuro-oncologieprotocol	_	_
-109-6	4588-4591	met	_	_
-109-7	4592-4600	perfusie	_	_
-109-8	4601-4602	.	_	_
 				
-#Text=Bekende postoperatieve status hoog frontaal rechts .				
-110-1	4603-4610	Bekende	_	_
-110-2	4611-4625	postoperatieve	_	_
-110-3	4626-4632	status	_	_
-110-4	4633-4637	hoog	_	_
-110-5	4638-4646	frontaal	_	_
-110-6	4647-4653	rechts	_	_
-110-7	4654-4655	.	_	_
 				
-#Text=Duidelijke toename van het oedeem rechts frontopariëto-occipitaal .				
-111-1	4656-4666	Duidelijke	_	_
-111-2	4667-4674	toename	_	_
-111-3	4675-4678	van	_	_
-111-4	4679-4682	het	_	_
-111-5	4683-4689	oedeem	_	_
-111-6	4690-4696	rechts	_	_
-111-7	4697-4721	frontopariëto-occipitaal	_	_
-111-8	4722-4723	.	_	_
 				
-#Text=Met massawerking o.a. op de achterhoorn van de rechter zijventrikel .				
-112-1	4724-4727	Met	_	_
-112-2	4728-4740	massawerking	_	_
-112-3	4741-4745	o.a.	_	_
-112-4	4746-4748	op	_	_
-112-5	4749-4751	de	_	_
-112-6	4752-4763	achterhoorn	_	_
-112-7	4764-4767	van	_	_
-112-8	4768-4770	de	_	_
-112-9	4771-4778	rechter	_	_
-112-10	4779-4791	zijventrikel	_	_
-112-11	4792-4793	.	_	_
 				
-#Text=Geen middellijnshift .				
-113-1	4794-4798	Geen	_	_
-113-2	4799-4814	middellijnshift	_	_
-113-3	4815-4816	.	_	_
 				
-#Text=Toename van de diameter van de metastase rechts in het frontale operculum , deze meet nu				
-114-1	4817-4824	Toename	_	_
-114-2	4825-4828	van	_	_
-114-3	4829-4831	de	_	_
-114-4	4832-4840	diameter	_	_
-114-5	4841-4844	van	_	_
-114-6	4845-4847	de	_	_
-114-7	4848-4857	metastase	_	_
-114-8	4858-4864	rechts	_	_
-114-9	4865-4867	in	_	_
-114-10	4868-4871	het	_	_
-114-11	4872-4880	frontale	_	_
-114-12	4881-4890	operculum	_	_
-114-13	4891-4892	,	_	_
-114-14	4893-4897	deze	_	_
-114-15	4898-4902	meet	_	_
-114-16	4903-4905	nu	_	_
 				
-#Text=maximaal 11 mm dit was 5 mm .				
-115-1	4906-4914	maximaal	_	_
-115-2	4915-4917	11	_	_
-115-3	4918-4920	mm	_	_
-115-4	4921-4924	dit	_	_
-115-5	4925-4928	was	_	_
-115-6	4929-4930	5	_	_
-115-7	4931-4933	mm	_	_
-115-8	4934-4935	.	_	_
 				
-#Text=Tweetal metastasen rechts				
-116-1	4936-4943	Tweetal	_	_
-116-2	4944-4954	metastasen	_	_
-116-3	4955-4961	rechts	_	_
 				
-#Text=pariëto-occipitaal van 2.2 centimeter , dit was 9 mm , en van 9 mm , dit was 3 mm ( 19-11/10 ) .				
-117-1	4962-4980	pariëto-occipitaal	_	_
-117-2	4981-4984	van	_	_
-117-3	4985-4988	2.2	_	_
-117-4	4989-4999	centimeter	_	_
-117-5	5000-5001	,	_	_
-117-6	5002-5005	dit	_	_
-117-7	5006-5009	was	_	_
-117-8	5010-5011	9	_	_
-117-9	5012-5014	mm	_	_
-117-10	5015-5016	,	_	_
-117-11	5017-5019	en	_	_
-117-12	5020-5023	van	_	_
-117-13	5024-5025	9	_	_
-117-14	5026-5028	mm	_	_
-117-15	5029-5030	,	_	_
-117-16	5031-5034	dit	_	_
-117-17	5035-5038	was	_	_
-117-18	5039-5040	3	_	_
-117-19	5041-5043	mm	_	_
-117-20	5044-5045	(	_	_
-117-21	5046-5054	19-11/10	_	_
-117-22	5055-5056	)	_	_
-117-23	5057-5058	.	_	_
 				
-#Text=Deze metastasen zijn spontaan T1 hyperintens passend bij melanine .				
-118-1	5059-5063	Deze	_	_
-118-2	5064-5074	metastasen	_	_
-118-3	5075-5079	zijn	_	_
-118-4	5080-5088	spontaan	_	_
-118-5	5089-5091	T1	_	_
-118-6	5092-5103	hyperintens	_	_
-118-7	5104-5111	passend	_	_
-118-8	5112-5115	bij	_	_
-118-9	5116-5124	melanine	_	_
-118-10	5125-5126	.	_	_
 				
-#Text=Ter plaatse verhoogde perfusie , zie 15-6 .				
-119-1	5127-5130	Ter	_	_
-119-2	5131-5138	plaatse	_	_
-119-3	5139-5148	verhoogde	_	_
-119-4	5149-5157	perfusie	_	_
-119-5	5158-5159	,	_	_
-119-6	5160-5163	zie	_	_
-119-7	5164-5168	15-6	_	_
-119-8	5169-5170	.	_	_
 				
-#Text=Puntiforme aankleuring links				
-120-1	5171-5181	Puntiforme	_	_
-120-2	5182-5193	aankleuring	_	_
-120-3	5194-5199	links	_	_
 				
-#Text=occipitaal , ongewijzigd ( 19-10 ) .				
-121-1	5200-5210	occipitaal	_	_
-121-2	5211-5212	,	_	_
-121-3	5213-5224	ongewijzigd	_	_
-121-4	5225-5226	(	_	_
-121-5	5227-5232	19-10	_	_
-121-6	5233-5234	)	_	_
-121-7	5235-5236	.	_	_
 				
-#Text=Geen leptomeningeale aankleuring .				
-122-1	5237-5241	Geen	_	_
-122-2	5242-5257	leptomeningeale	_	_
-122-3	5258-5269	aankleuring	_	_
-122-4	5270-5271	.	_	_
 				
-#Text=Normale luchthoudendheid van de paranasale sinussen en het mastoid beiderzijds .				
-123-1	5272-5279	Normale	_	_
-123-2	5280-5296	luchthoudendheid	_	_
-123-3	5297-5300	van	_	_
-123-4	5301-5303	de	_	_
-123-5	5304-5314	paranasale	_	_
-123-6	5315-5323	sinussen	_	_
-123-7	5324-5326	en	_	_
-123-8	5327-5330	het	_	_
-123-9	5331-5338	mastoid	_	_
-123-10	5339-5350	beiderzijds	_	_
-123-11	5351-5352	.	_	_
 				
-#Text=Normaal aspect van de orbitae .				
-124-1	5353-5360	Normaal	_	_
-124-2	5361-5367	aspect	_	_
-124-3	5368-5371	van	_	_
-124-4	5372-5374	de	_	_
-124-5	5375-5382	orbitae	_	_
-124-6	5383-5384	.	_	_
 				
-#Text=Geen focale ossale laesies .				
-125-1	5385-5389	Geen	_	_
-125-2	5390-5396	focale	_	_
-125-3	5397-5403	ossale	_	_
-125-4	5404-5411	laesies	_	_
-125-5	5412-5413	.	_	_
 				
-#Text=Geen afwijkingen aan de extracraniele weke delen .				
-126-1	5414-5418	Geen	_	_
-126-2	5419-5430	afwijkingen	_	_
-126-3	5431-5434	aan	_	_
-126-4	5435-5437	de	_	_
-126-5	5438-5451	extracraniele	_	_
-126-6	5452-5456	weke	_	_
-126-7	5457-5462	delen	_	_
-126-8	5463-5464	.	_	_
 				
-#Text=Conclusie : Toename qua grootte van een drietal metastasen met toename van het perifocale oedeem en massawerking .				
-127-1	5465-5474	Conclusie	_	_
-127-2	5475-5476	:	_	_
-127-3	5477-5484	Toename	_	_
-127-4	5485-5488	qua	_	_
-127-5	5489-5496	grootte	_	_
-127-6	5497-5500	van	_	_
-127-7	5501-5504	een	_	_
-127-8	5505-5512	drietal	_	_
-127-9	5513-5523	metastasen	_	_
-127-10	5524-5527	met	_	_
-127-11	5528-5535	toename	_	_
-127-12	5536-5539	van	_	_
-127-13	5540-5543	het	_	_
-127-14	5544-5554	perifocale	_	_
-127-15	5555-5561	oedeem	_	_
-127-16	5562-5564	en	_	_
-127-17	5565-5577	massawerking	_	_
-127-18	5578-5579	.	_	_
 				
-#Text=Ongewijzigde aankleuring links				
-128-1	5580-5592	Ongewijzigde	_	_
-128-2	5593-5604	aankleuring	_	_
-128-3	5605-5610	links	_	_
 				
-#Text=occipitaal , ook suspect voor een metastase .				
-129-1	5611-5621	occipitaal	_	_
-129-2	5622-5623	,	_	_
-129-3	5624-5627	ook	_	_
-129-4	5628-5635	suspect	_	_
-129-5	5636-5640	voor	_	_
-129-6	5641-5644	een	_	_
-129-7	5645-5654	metastase	_	_
-129-8	5655-5656	.	_	_
 				
-#Text=MRI-hersenen				
-130-1	5657-5669	MRI-hersenen	_	_
 				
-#Text=11-9-2017 : Stabiele ziekte , afname oedeem				
-131-1	5670-5679	11-9-2017	_	_
-131-2	5680-5681	:	_	_
-131-3	5682-5690	Stabiele	_	_
-131-4	5691-5697	ziekte	_	_
-131-5	5698-5699	,	_	_
-131-6	5700-5706	afname	_	_
-131-7	5707-5713	oedeem	_	_
 				
-#Text=rechts occipitaal .				
-132-1	5714-5720	rechts	_	_
-132-2	5721-5731	occipitaal	_	_
-132-3	5732-5733	.	_	_
 				
-#Text=Conclusie				
-133-1	5734-5743	Conclusie	_	_
 				
-#Text=Man van 62 jaar met 3 progressieve hersenmetastasen .				
-134-1	5744-5747	Man	_	_
-134-2	5748-5751	van	_	_
-134-3	5752-5754	62	_	_
-134-4	5755-5759	jaar	_	_
-134-5	5760-5763	met	_	_
-134-6	5764-5765	3	_	_
-134-7	5766-5778	progressieve	_	_
-134-8	5779-5795	hersenmetastasen	_	_
-134-9	5796-5797	.	_	_
 				
-#Text=Achteruitgang in conditie dateert van september , terwijl op dat moment de MRI van de hersenen een stabiel beeld liet zien :				
-135-1	5798-5811	Achteruitgang	_	_
-135-2	5812-5814	in	_	_
-135-3	5815-5823	conditie	_	_
-135-4	5824-5831	dateert	_	_
-135-5	5832-5835	van	_	_
-135-6	5836-5845	september	_	_
-135-7	5846-5847	,	_	_
-135-8	5848-5855	terwijl	_	_
-135-9	5856-5858	op	_	_
-135-10	5859-5862	dat	_	_
-135-11	5863-5869	moment	_	_
-135-12	5870-5872	de	_	_
-135-13	5873-5876	MRI	_	_
-135-14	5877-5880	van	_	_
-135-15	5881-5883	de	_	_
-135-16	5884-5892	hersenen	_	_
-135-17	5893-5896	een	_	_
-135-18	5897-5904	stabiel	_	_
-135-19	5905-5910	beeld	_	_
-135-20	5911-5915	liet	_	_
-135-21	5916-5920	zien	_	_
-135-22	5921-5922	:	_	_
 				
-#Text=huidige achteruitgang derhalve maar zeer ten dele verklaart door toename hersenmetastasen .				
-136-1	5923-5930	huidige	_	_
-136-2	5931-5944	achteruitgang	_	_
-136-3	5945-5953	derhalve	_	_
-136-4	5954-5958	maar	_	_
-136-5	5959-5963	zeer	_	_
-136-6	5964-5967	ten	_	_
-136-7	5968-5972	dele	_	_
-136-8	5973-5982	verklaart	_	_
-136-9	5983-5987	door	_	_
-136-10	5988-5995	toename	_	_
-136-11	5996-6012	hersenmetastasen	_	_
-136-12	6013-6014	.	_	_
 				
-#Text=Ook nauwelijks verbetering op verhoging steroïden .				
-137-1	6015-6018	Ook	_	_
-137-2	6019-6029	nauwelijks	_	_
-137-3	6030-6041	verbetering	_	_
-137-4	6042-6044	op	_	_
-137-5	6045-6054	verhoging	_	_
-137-6	6055-6064	steroïden	_	_
-137-7	6065-6066	.	_	_
 				
-#Text=Conditie te slecht om verbetering door radiotherapie te verwachten .				
-138-1	6067-6075	Conditie	_	_
-138-2	6076-6078	te	_	_
-138-3	6079-6085	slecht	_	_
-138-4	6086-6088	om	_	_
-138-5	6089-6100	verbetering	_	_
-138-6	6101-6105	door	_	_
-138-7	6106-6119	radiotherapie	_	_
-138-8	6120-6122	te	_	_
-138-9	6123-6133	verwachten	_	_
-138-10	6134-6135	.	_	_
 				
-#Text=WGBO :				
-139-1	6136-6140	WGBO	_	_
-139-2	6141-6142	:	_	_
 				
-#Text=Met patiënt en partner werd besproken :				
-140-1	6143-6146	Met	_	_
-140-2	6147-6154	patiënt	_	_
-140-3	6155-6157	en	_	_
-140-4	6158-6165	partner	_	_
-140-5	6166-6170	werd	_	_
-140-6	6171-6180	besproken	_	_
-140-7	6181-6182	:	_	_
 				
-#Text=Diagnose : ja				
-141-1	6183-6191	Diagnose	_	_
-141-2	6192-6193	:	_	_
-141-3	6194-6196	ja	_	_
 				
-#Text=Prognose : ja Indicatie en verwachtingen :				
-142-1	6197-6205	Prognose	_	_
-142-2	6206-6207	:	_	_
-142-3	6208-6210	ja	_	_
-142-4	6211-6220	Indicatie	_	_
-142-5	6221-6223	en	_	_
-142-6	6224-6237	verwachtingen	_	_
-142-7	6238-6239	:	_	_
 				
-#Text=ja : geen verbetering door RT te verwachten				
-143-1	6240-6242	ja	_	_
-143-2	6243-6244	:	_	_
-143-3	6245-6249	geen	_	_
-143-4	6250-6261	verbetering	_	_
-143-5	6262-6266	door	_	_
-143-6	6267-6269	RT	_	_
-143-7	6270-6272	te	_	_
-143-8	6273-6283	verwachten	_	_
 				
-#Text=Besproken met Inge Werter dat patiënt in onvoldoende conditie is om effect van bestraling te verwachten en dat bovendien achteruitgang niet 1 op 1 gekoppeld is aan huidige MRI hersenen .				
-144-1	6284-6293	Besproken	_	_
-144-2	6294-6297	met	_	_
-144-3	6298-6302	Inge	_	_
-144-4	6303-6309	Werter	_	_
-144-5	6310-6313	dat	_	_
-144-6	6314-6321	patiënt	_	_
-144-7	6322-6324	in	_	_
-144-8	6325-6336	onvoldoende	_	_
-144-9	6337-6345	conditie	_	_
-144-10	6346-6348	is	_	_
-144-11	6349-6351	om	_	_
-144-12	6352-6358	effect	_	_
-144-13	6359-6362	van	_	_
-144-14	6363-6373	bestraling	_	_
-144-15	6374-6376	te	_	_
-144-16	6377-6387	verwachten	_	_
-144-17	6388-6390	en	_	_
-144-18	6391-6394	dat	_	_
-144-19	6395-6404	bovendien	_	_
-144-20	6405-6418	achteruitgang	_	_
-144-21	6419-6423	niet	_	_
-144-22	6424-6425	1	_	_
-144-23	6426-6428	op	_	_
-144-24	6429-6430	1	_	_
-144-25	6431-6440	gekoppeld	_	_
-144-26	6441-6443	is	_	_
-144-27	6444-6447	aan	_	_
-144-28	6448-6455	huidige	_	_
-144-29	6456-6459	MRI	_	_
-144-30	6460-6468	hersenen	_	_
-144-31	6469-6470	.	_	_
 				
-#Text=Enige optie is om te kijken of met enkele dagen 16 mg dexamethason patient wel ADL zelfstandig wordt = KPS 70 .				
-145-1	6471-6476	Enige	_	_
-145-2	6477-6482	optie	_	_
-145-3	6483-6485	is	_	_
-145-4	6486-6488	om	_	_
-145-5	6489-6491	te	_	_
-145-6	6492-6498	kijken	_	_
-145-7	6499-6501	of	_	_
-145-8	6502-6505	met	_	_
-145-9	6506-6512	enkele	_	_
-145-10	6513-6518	dagen	_	_
-145-11	6519-6521	16	_	_
-145-12	6522-6524	mg	_	_
-145-13	6525-6537	dexamethason	_	_
-145-14	6538-6545	patient	_	_
-145-15	6546-6549	wel	_	_
-145-16	6550-6553	ADL	_	_
-145-17	6554-6565	zelfstandig	_	_
-145-18	6566-6571	wordt	_	_
-145-19	6572-6573	=	_	_
-145-20	6574-6577	KPS	_	_
-145-21	6578-6580	70	_	_
-145-22	6581-6582	.	_	_
 				
-#Text=------------------------------------------------------------------------------------------------------------------------------ Bestralingsgebieden				
-146-1	6583-6709	------------------------------------------------------------------------------------------------------------------------------	_	_
-146-2	6710-6729	Bestralingsgebieden	_	_
 				
-#Text=MCA : Rechts frontaal 1 x 21 Gy , dec 2016 gereseceerd				
-147-1	6730-6733	MCA	_	_
-147-2	6734-6735	:	_	_
-147-3	6736-6742	Rechts	_	_
-147-4	6743-6751	frontaal	_	_
-147-5	6752-6753	1	_	_
-147-6	6754-6755	x	_	_
-147-7	6756-6758	21	_	_
-147-8	6759-6761	Gy	_	_
-147-9	6762-6763	,	_	_
-147-10	6764-6767	dec	_	_
-147-11	6768-6772	2016	_	_
-147-12	6773-6784	gereseceerd	_	_
 				
-#Text=Links				
-148-1	6785-6790	Links	_	_
 				
-#Text=parietaal				
-149-1	6791-6800	parietaal	_	_
 				
-#Text=1 x 24 Gy .				
-150-1	6801-6802	1	_	_
-150-2	6803-6804	x	_	_
-150-3	6805-6807	24	_	_
-150-4	6808-6810	Gy	_	_
-150-5	6811-6812	.	_	_
 				
-#Text=Links				
-151-1	6813-6818	Links	_	_
 				
-#Text=occipitaal 1 x 24 Gy .				
-152-1	6819-6829	occipitaal	_	_
-152-2	6830-6831	1	_	_
-152-3	6832-6833	x	_	_
-152-4	6834-6836	24	_	_
-152-5	6837-6839	Gy	_	_
-152-6	6840-6841	.	_	_
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
