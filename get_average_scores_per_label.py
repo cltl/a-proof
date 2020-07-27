@@ -47,8 +47,8 @@ def get_annotator_dict(df, columname):
                 new_list.append(endtoken)
                 
                 #add list to dict with identifier as key
-                if keyname not in test_dict:
-                    test_dict[keyname] = new_list
+                if keyname not in annotator_dict:
+                    annotator_dict[keyname] = new_list
                 else:
                     continue
             
@@ -79,8 +79,8 @@ def get_annotator_dict(df, columname):
                 new_list.append(begintoken)
                 new_list.append(endtoken)
                 
-                if keyname not in test_dict:
-                    test_dict[keyname] = new_list
+                if keyname not in annotator_dict:
+                    annotator_dict[keyname] = new_list
                 else:
                     continue
                     
@@ -109,7 +109,7 @@ def get_annotator_dict(df, columname):
                 new_list.append(begintoken)
                 new_list.append(endtoken)
 
-                if keyname not in test_dict:
+                if keyname not in annotator_dict:
                     annotator_dict[keyname] = new_list
                 else:
                     continue
