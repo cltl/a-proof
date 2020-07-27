@@ -4,32 +4,72 @@ This code takes a dataframe with annotations and returns a dataframe with annota
 '''
 
 import pandas as pd
-
 def get_annotator_dict(df, columname):
-    '''
-    Create a dictionary with all the labels and their spans with token index for one annotator
-    :param df: a pandas dataframe 
-    :param columname: str (annotator's last name)
-    '''
     annotator_dict = dict()
     for index, tag in enumerate(df[columname]):
-        # find location of a label
         if tag != '_':
-            #save the file this label belongs to
             filename = df.iloc[index]['file_id']
             new_list = []
-            # split the double tags and use the first label
             if ('|') in tag:
                 nametag = tag.split('|')[0]
                 keynametag = nametag[:-3]
                 list_range = []
-                # save span
                 for row_index,row in df.iterrows():
                     if row['file_id'] != filename:
                         continue
                     else:
                         if nametag in str(row[columname]):
                             list_range.append(row_index[5:])
+                    
+                if len(list_range)>1:
+                    begintoken = int(list_range[0])
+                    endtoken = int(list_range[-1])
+
+                else:
+                    begintoken = int(list_range[0])
+                    endtoken = int(list_range[0])
+                    
+                keyname = keynametag + '_' + str(df.iloc[index]['file_id']) + '_' + str(begintoken) + '_' + str(endtoken)
+                new_list.append(keynametag)
+                new_list.append(df.iloc[index]['file_id'])
+                new_list.append(begintoken)
+                new_list.append(endtoken)
+                
+                if keyname not in test_dict:
+                    test_dict[keyname] = new_list
+                else:
+                    continue
+                    
+            if ('|') in tag:
+                nametag = tag.split('|')[1]
+                keynametag = nametag[:-3]
+                
+                list_range = []
+                for row_index,row in df.iterrows():
+                    if row['file_id'] != filename:
+                        continue
+                    else:
+                        if nametag in str(row[columname]):
+                            list_range.append(row_index[5:])
+                    
+                if len(list_range)>1:
+                    begintoken = int(list_range[0])
+                    endtoken = int(list_range[-1])
+
+                else:
+                    begintoken = int(list_range[0])
+                    endtoken = int(list_range[0])
+                    
+                keyname = keynametag + '_' + str(df.iloc[index]['file_id']) + '_' + str(begintoken) + '_' + str(endtoken)
+                new_list.append(keynametag)
+                new_list.append(df.iloc[index]['file_id'])
+                new_list.append(begintoken)
+                new_list.append(endtoken)
+                
+                if keyname not in test_dict:
+                    test_dict[keyname] = new_list
+                else:
+                    continue
 
             else:
                 keynametag = tag[:-3]
@@ -40,30 +80,25 @@ def get_annotator_dict(df, columname):
                     else:
                         if row[columname] == tag:
                             list_range.append(row_index[5:])
-                            
-            # get first and last index number from list
-            if len(list_range)>1:
-                begintoken = int(list_range[0])
-                endtoken = int(list_range[-1])
 
-            else:
-                begintoken = int(list_range[0])
-                endtoken = int(list_range[0])
-            
-            # create identifier
-            keyname = keynametag + '_' + str(df.iloc[index]['file_id']) + '_' + str(begintoken) + '_' + str(endtoken)
-            
-            # create a list with all information needed
-            new_list.append(keynametag)
-            new_list.append(df.iloc[index]['file_id'])
-            new_list.append(begintoken)
-            new_list.append(endtoken)
-            
-            # avoid double identifiers and add each list to a dictionary with its identifier as its key
-            if keyname not in annotator_dict:
-                annotator_dict[keyname] = new_list
-            else:
-                continue
+                if len(list_range)>1:
+                    begintoken = int(list_range[0])
+                    endtoken = int(list_range[-1])
+
+                else:
+                    begintoken = int(list_range[0])
+                    endtoken = int(list_range[0])
+
+                keyname = keynametag + '_' + str(df.iloc[index]['file_id']) + '_' + str(begintoken) + '_' + str(endtoken)
+                new_list.append(keynametag)
+                new_list.append(df.iloc[index]['file_id'])
+                new_list.append(begintoken)
+                new_list.append(endtoken)
+
+                if keyname not in test_dict:
+                    annotator_dict[keyname] = new_list
+                else:
+                    continue
     return(annotator_dict)
 
 
