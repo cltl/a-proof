@@ -4,12 +4,22 @@ This code takes a dataframe with annotations and returns a dataframe with annota
 '''
 
 import pandas as pd
+
 def get_annotator_dict(df, columname):
+    '''
+    Create a dictionary with all the labels and their spans with token index for one annotator
+    :param df: a pandas dataframe 
+    :param columname: str (annotator's last name)
+    '''
+    #create empty dict
     annotator_dict = dict()
     for index, tag in enumerate(df[columname]):
+        #check where label is
         if tag != '_':
+            #save file_id of that location
             filename = df.iloc[index]['file_id']
             new_list = []
+            #begin extracting first tag for cells with double tags
             if ('|') in tag:
                 nametag = tag.split('|')[0]
                 keynametag = nametag[:-3]
@@ -20,7 +30,7 @@ def get_annotator_dict(df, columname):
                     else:
                         if nametag in str(row[columname]):
                             list_range.append(row_index[5:])
-                    
+                #get span
                 if len(list_range)>1:
                     begintoken = int(list_range[0])
                     endtoken = int(list_range[-1])
@@ -28,18 +38,21 @@ def get_annotator_dict(df, columname):
                 else:
                     begintoken = int(list_range[0])
                     endtoken = int(list_range[0])
-                    
+                
+                #create list with info (label, file_id, begin_span, end_span)
                 keyname = keynametag + '_' + str(df.iloc[index]['file_id']) + '_' + str(begintoken) + '_' + str(endtoken)
                 new_list.append(keynametag)
                 new_list.append(df.iloc[index]['file_id'])
                 new_list.append(begintoken)
                 new_list.append(endtoken)
                 
+                #add list to dict with identifier as key
                 if keyname not in test_dict:
                     test_dict[keyname] = new_list
                 else:
                     continue
-                    
+            
+            #begin extracting second tag for cells with double tags
             if ('|') in tag:
                 nametag = tag.split('|')[1]
                 keynametag = nametag[:-3]
@@ -70,7 +83,8 @@ def get_annotator_dict(df, columname):
                     test_dict[keyname] = new_list
                 else:
                     continue
-
+                    
+            #extracting tag when there is just one tag in a cell:
             else:
                 keynametag = tag[:-3]
                 list_range = []
