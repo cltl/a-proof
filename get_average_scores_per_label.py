@@ -139,7 +139,7 @@ def get_dataframe(df, annotator_names):
     
     # create a dataframe from the dictionaries
     new_df = pd.DataFrame.from_dict(dict1, orient = 'index')
-    new_df.columns = ['label', 'file_id', 'begin_span', 'end_span']
+    new_df.columns = ['label', 'file_id', 'begin_span', 'end_span', '2nd_label', '2nd_file_id', 'begin_2nd_label', 'end_2nd_label']
     new_df[annotator_names[0]] = 0
     new_df[annotator_names[1]] = 0
     new_df[annotator_names[2]] = 0
