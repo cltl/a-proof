@@ -18,34 +18,37 @@ def open_df_from_tsv(filename):
     #ata2= []
     with (filename).open() as infile:
     #with open(filename, 'r', encoding = 'utf-8') as infile:
-        for row in infile:
+       for row in infile:
             # Skip rows starting with #
             if row.startswith('#'):
                 continue
-            # Remove '\n' at end of row
-            row = row[:-1]
+            # Remove '\n' at end of row and traling whitespaces
+            row = row[:-1].strip()
             # Split on tab
             split_row = row.split('\t')  
             # Skip if empty row
             if split_row[0] == '':
                 continue
+
             # If length is not 5 (some files had only 3 columns), append columns with '_'
-            #if len(split_row) == 6:
-                #print(len(split_row))
-                #print(filename)
             if len(split_row) == 5:
                 #continue
                 #print(len(split_row))
                 #print(filename)
                 split_row.extend(['_'])
-            if len(split_row) == 4:
+            elif len(split_row) == 4:
                 #print(len(split_row))
                 #print(filename)
                 split_row.extend(['_', '_'])
-                
-            #print(len(split_row))
-            #print(filename)
-                
+            
+            elif len(split_row) == 3:
+                #print(split_row)
+                continue
+            elif len(spit_row!=6):
+                print(len(split_row))
+                print(split_row)
+                continue
+                            
             data.append(split_row)
             
     #print(data)
