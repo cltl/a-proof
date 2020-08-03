@@ -42,7 +42,7 @@ def main():
                 print('Error: {} does not exist in the table.'.format(annotator))
                 continue
                 
-    df.to_pickle('/data/homedirs/stella/IAA_code/token_level_df.pkl')
+    df.to_pickle('token_level_df.pkl')
 
     annotator_names = ['avelli', 'bos', 'meskers']
     #annotator_names = ['avelli', 'bos', 'katsburg', 'meskers', 'opsomer', 'swartjes', 'vanderpas', 'vervaart']
