@@ -11,17 +11,20 @@ class Span:
     """
 
     def __init__(self,
-                 begin, end):
+                 begin, end, token):
         self.begintoken = begin
         self.endtoken = end
+        self.token = token
 
 def get_span_for_tag (df, annotator, filename, nametag):
     list_range = []
+    token = ''
     for row_index, row in df.iterrows():
         if row['file_id'] != filename:
             continue
         else:
             if nametag in str(row[annotator]):
+                token += ' '+row['token']
                 list_range.append(row_index[5:])
     #get span
     if len(list_range)>1:
@@ -31,7 +34,7 @@ def get_span_for_tag (df, annotator, filename, nametag):
     else:
         begintoken = int(list_range[0])
         endtoken = int(list_range[0])
-    span = Span(begintoken, endtoken)
+    span = Span(begintoken, endtoken, token)
     return span
 
 def make_keyname (df, filename, keynametag, span):
@@ -48,9 +51,10 @@ def get_annotator_dict(df, annotator):
     '''
     #create empty dict
     annotator_dict = dict()
-    if df[annotator]:
-        for index, tag in enumerate(df[annotator]):
-            #check where label is
+    
+    for index, tag in enumerate(df[annotator]):
+        try:
+        #check where label is
             tag = str(tag)
             if tag != '_':
                 #save file_id of that location
@@ -62,134 +66,86 @@ def get_annotator_dict(df, annotator):
                     keynametag = tag[:-3]
                     span = get_span_for_tag(df, annotator, filename, nametag)
                     keyname = make_keyname(df, filename, keynametag, span)
-
                     new_list.append(keynametag)
                     new_list.append(filename)
                     new_list.append(span.begintoken)
                     new_list.append(span.endtoken)
-
+                    new_list.append(span.token)
                     #add list to dict with identifier as key
                     if keyname not in annotator_dict:
                         annotator_dict[keyname] = new_list
                     else:
                         continue
-
+                        
                     #begin extracting second tag for cells with double tags
                     nametag = tag.split('|')[1]
                     keynametag = tag[:-3]
                     span = get_span_for_tag(df, annotator, filename, nametag)
                     keyname = make_keyname(df, filename, keynametag, span)
-
                     new_list.append(keynametag)
                     new_list.append(filename)
                     new_list.append(span.begintoken)
                     new_list.append(span.endtoken)
-
+                    new_list.append(span.token)
                     #add list to dict with identifier as key
                     if keyname not in annotator_dict:
                         annotator_dict[keyname] = new_list
                     else:
                         continue
-
-
+                        
                 #extracting tag when there is just one tag in a cell:
                 else:
                     keynametag = tag[:-3]
                     span = get_span_for_tag(df, annotator, filename, tag)
                     keyname = make_keyname(df, filename, keynametag, span)
-
                     new_list.append(keynametag)
                     new_list.append(filename)
                     new_list.append(span.begintoken)
                     new_list.append(span.endtoken)
-
+                    new_list.append(span.token)
                     if keyname not in annotator_dict:
                         annotator_dict[keyname] = new_list
                     else:
                         continue
-                    
+                        
+        except KeyError:
+            print('KeyError: {} does not exist in the table.'.format(annotator))
+            continue
+    
     return(annotator_dict)
 
 
-def get_dataframeForThree(df, annotator_names): 
+def get_dataframe(df, annotator_names): 
     '''
     Create a dataframe with all possible labels and spans from all annotators 
      :param df: a pandas dataframe
      :param annotator_names: a list with strings which are in accordance with the columnnames of the df (annotators' last names)
     '''
-    
+    mergeddict = dict()
     # get dictionaries per annotator
-    dict1 = get_annotator_dict(df, 'labels_'+annotator_names[0])
-    dict2 = get_annotator_dict(df, 'labels_'+annotator_names[1])
-    dict3 = get_annotator_dict(df, 'labels_'+annotator_names[2])
+    for annotator in annotator_names:
+        try:
+            dicta = get_annotator_dict(df, 'labels_'+annotator)
+            if len(dicta)>0:
+                for key, value in dicta.items():
+                    if key not in mergeddict:
+                        mergeddict[key] = value 
+            else:
+                print('no labels for annotator:', annotator)
+        except KeyError:
+            print('KeyError: {} does not exist in the table.'.format(annotator))
+            continue                
+
+    new_df = pd.DataFrame.from_dict(mergeddict, orient = 'index')
+    new_df.columns = ['label', 'file_id', 'begin_span', 'end_span', 'token', '2nd_label', '2nd_file_id', 'begin_2nd_label', 'end_2nd_label', 'unknown']
     
-    # merge all dictionaries without taking any double ones
-    for key, value in dict2.items():
-        if key not in dict1:
-            dict1[key] = value
-    for key, value in dict3.items():
-        if key not in dict1:
-            dict1[key] = value 
-            
-    # create a dataframe from the dictionaries
-    new_df = pd.DataFrame.from_dict(dict1, orient = 'index')
-    new_df.columns = ['label', 'file_id', 'begin_span', 'end_span', '2nd_label', '2nd_file_id', 'begin_2nd_label', 'end_2nd_label']
-    new_df[annotator_names[0]] = 0
-    new_df[annotator_names[1]] = 0
-    new_df[annotator_names[2]] = 0
-    
+    for annotator in annotator_names:
+        # create a dataframe from the dictionaries
+        new_df[annotator] = 0
+
+    new_df.info()
     return(new_df)
 
-def get_dataframeForAll(df, annotator_names): 
-    '''
-    Create a dataframe with all possible labels and spans from all annotators 
-     :param df: a pandas dataframe
-     :param annotator_names: a list with strings which are in accordance with the columnnames of the df (annotators' last names)
-    '''
-    
-    # get dictionaries per annotator
-    dict1 = get_annotator_dict(df, 'labels_'+annotator_names[0])
-    dict2 = get_annotator_dict(df, 'labels_'+annotator_names[1])
-    dict3 = get_annotator_dict(df, 'labels_'+annotator_names[2])
-    dict4 = get_annotator_dict(df, 'labels_'+annotator_names[3])
-    dict5 = get_annotator_dict(df, 'labels_'+annotator_names[4])
-    dict6 = get_annotator_dict(df, 'labels_'+annotator_names[6])
-    dict7 = get_annotator_dict(df, 'labels_'+annotator_names[7])
-    dict8 = get_annotator_dict(df, 'labels_'+annotator_names[8])
-    
-    # merge all dictionaries without taking any double ones
-    for key, value in dict2.items():
-        if key not in dict1:
-            dict1[key] = value
-    for key, value in dict3.items():
-        if key not in dict1:
-            dict1[key] = value
-    for key, value in dict4.items():
-        if key not in dict1:
-            dict1[key] = value
-    for key, value in dict5.items():
-        if key not in dict1:
-            dict1[key] = value
-    for key, value in dict7.items():
-        if key not in dict1:
-            dict1[key] = value 
-    for key, value in dict8.items():
-        if key not in dict1:
-            dict1[key] = value           
-            
-    # create a dataframe from the dictionaries
-    new_df = pd.DataFrame.from_dict(dict1, orient = 'index')
-    new_df.columns = ['label', 'file_id', 'begin_span', 'end_span', '2nd_label', '2nd_file_id', 'begin_2nd_label', 'end_2nd_label']
-    new_df[annotator_names[0]] = 0
-    new_df[annotator_names[1]] = 0
-    new_df[annotator_names[2]] = 0
-    new_df[annotator_names[3]] = 0
-    new_df[annotator_names[4]] = 0
-    new_df[annotator_names[5]] = 0
-    new_df[annotator_names[6]] = 0
-    new_df[annotator_names[7]] = 0
-    
-    return(new_df)
 def find_matches(df, annotator, dictionary):
     '''
     Score labels that a certain annotator annotated with 1 in the df by finding matches between the identifiers in the df and the identifiers in the personal dictionary of the annotator
