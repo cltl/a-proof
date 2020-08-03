@@ -23,6 +23,9 @@ def main():
         else: 
             # Create temporary df
             df_temp = open_df_from_tsv(filename)
+            if df_temp.empty:
+                #no content
+                continue
             try:
                 # if file is already in rows, and annotator is already in colmumns, then update
                 # if empty ['file_id'][1] does not exist, crash?
