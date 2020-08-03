@@ -25,6 +25,7 @@ def main():
             df_temp = open_df_from_tsv(filename)
             try:
                 # if file is already in rows, and annotator is already in colmumns, then update
+                # if empty ['file_id'][1] does not exist, crash?
                 if df_temp['file_id'][1] in set(df['file_id']) and f'labels_{annotator}' in df.columns:
                     df.update(df_temp)
                 # Elif file is in rows (and annotator not yet in columns), then concat with axis=1
