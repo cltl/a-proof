@@ -13,7 +13,7 @@ def change_labels_to_list_format(df):
 
             cleaned_labels = []
             for label in original_labels:
-                if '|' in label:
+                if '|' in str(label):
                     label_split = label.split('|')
                 else:
                     label_split = [label]
@@ -62,8 +62,8 @@ def join_dicts_on_label_and_index(dict_of_dicts):
                                   'end_index': end,
                                  'tokens': inner_dict['tokens'],
                                  'annotators': set([inner_dict['annotator']])}
-
-            cleaned_key = '_'.join([inner_dict['file_id'], str(start), str(end), key.split('[')[0]])
+            splitkey = str(key).split('[')[0]
+            cleaned_key = '_'.join([inner_dict['file_id'], str(start), str(end), splitkey])
 
             if cleaned_key in gathered_dict:
                 gathered_dict[cleaned_key]['annotators'].add(inner_dict['annotator'])
