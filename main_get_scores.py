@@ -38,8 +38,7 @@ def main():
                 # Else
                 else:
                     df = pd.concat([df, df_temp], join='inner')
-            except Error:
-                print('Error: {} does not exist in the table.'.format(annotator))
+            except:
                 continue
                 
     df.to_pickle('token_level_df.pkl')
