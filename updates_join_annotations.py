@@ -7,6 +7,7 @@ def open_df_from_tsv(filename):
     Creates pd.DataFrame from tsv file in conll format.
     """
     # Make pathlib type
+
     filename = Path(filename)
 
     # Get document id and annotator name from filename
@@ -17,8 +18,8 @@ def open_df_from_tsv(filename):
     data = []
     #ata2= []
     with (filename).open() as infile:
-    #with open(filename, 'r', encoding = 'utf-8') as infile:
-       for row in infile:
+        #with open(filename, 'r', encoding = 'utf-8') as infile:
+        for row in infile:
             # Skip rows starting with #
             if row.startswith('#'):
                 continue
@@ -32,9 +33,6 @@ def open_df_from_tsv(filename):
 
             # If length is not 5 (some files had only 3 columns), append columns with '_'
             if len(split_row) == 5:
-                #continue
-                #print(len(split_row))
-                #print(filename)
                 split_row.extend(['_'])
             elif len(split_row) == 4:
                 #print(len(split_row))
@@ -43,14 +41,14 @@ def open_df_from_tsv(filename):
             
             elif len(split_row) == 3:
                 #print(split_row)
-                continue
+                split_row.extend(['_', '_', '_'])
+                #continue
             elif len(spit_row!=6):
-                print(len(split_row))
-                print(split_row)
+                # print(len(split_row))
+                # print(split_row)
                 continue
-                            
             data.append(split_row)
-            
+
     #print(data)
     
     # Create pd.DataFrame
@@ -113,6 +111,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-
-    
-
