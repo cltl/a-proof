@@ -125,8 +125,10 @@ def get_dataframe(df, annotator_names):
     # get dictionaries per annotator
     for annotator in annotator_names:
         try:
+            print('Annotator to be merged', annotator)
             dicta = get_annotator_dict(df, 'labels_'+annotator)
             if len(dicta)>0:
+                print(len(dicta))
                 for key, value in dicta.items():
                     if key not in mergeddict:
                         mergeddict[key] = value 
@@ -135,14 +137,14 @@ def get_dataframe(df, annotator_names):
         except KeyError:
             print('KeyError: {} does not exist in the table.'.format(annotator))
             continue                
-
+    print('Merged annotations:', len(mergeddict))
     new_df = pd.DataFrame.from_dict(mergeddict, orient = 'index')
     new_df.columns = ['label', 'file_id', 'begin_span', 'end_span', 'token', '2nd_label', '2nd_file_id', 'begin_2nd_label', 'end_2nd_label', 'unknown']
     
     for annotator in annotator_names:
         # create a dataframe from the dictionaries
         new_df[annotator] = 0
-
+    print('Final data frame after merge:')
     new_df.info()
     return(new_df)
 
