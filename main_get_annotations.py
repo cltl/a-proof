@@ -6,8 +6,11 @@ from updates_join_annotations import open_df_from_tsv
             
 def main():
     # DEFINE PATHS
-    folder_path = './sample_data'           # Folder path from which to find the annotated tsv files
-    output_pkl_path = 'token_level_df.pkl'  # Output path to which to write the df in pkl format
+    # folder_path = './sample_data'           # Folder path from which to find the annotated tsv files
+    # output_pkl_path = 'token_level_df.pkl'  # Output path to which to write the df in pkl format
+    
+    folder_path = './../../data/raw_data/week_30'           # Folder path from which to find the annotated tsv files
+    output_pkl_path = './../../data/processed_data/week_30/token_level_df.pkl'  # Output path to which to write the df in pkl format
 
     for index, filename in enumerate(Path(folder_path).glob('**/*.tsv')):
         """
@@ -33,7 +36,7 @@ def main():
             try:
                 # if file is already in rows, and annotator is already in colmumns, then update
                 # if empty ['file_id'][1] does not exist, crash?
-                if df_temp['file_id'][1] in set(df['file_id']) and f'labels_{annotator}' in df.columns:
+                if df_temp['file_id'][1] in set(df['file_id']) and 'labels_{}'.format(annotator) in df.columns:
                     df.update(df_temp)
                 # Elif file is in rows (and annotator not yet in columns), then concat with axis=1
                 elif df_temp['file_id'][1] in set(df['file_id']):
