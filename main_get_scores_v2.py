@@ -24,14 +24,14 @@ def change_labels_to_list_format(df):
 
 
 def get_dict_per_file_per_annotator(df, annotator, filename):
-    df_filtered = df.loc[df['file_id'] == filename][['token_d_id', 'token', f'labels_{annotator}']]
+    df_filtered = df.loc[df['file_id'] == filename][['token_d_id', 'token', 'labels_{}'.format(annotator)]]
 
     labels_per_doc_per_annotator_dict = dict()
 
     for index, row in df_filtered.iterrows():
-        if row[f'labels_{annotator}'] != ['_']:
+        if row['labels_{}'.format(annotator)] != ['_']:
 
-            for label_and_id in row[f'labels_{annotator}']:
+            for label_and_id in row['labels_{}'.format(annotator)]:
                 if label_and_id in labels_per_doc_per_annotator_dict:
                     labels_per_doc_per_annotator_dict[label_and_id]['indices'].append(row['token_d_id'])
                     labels_per_doc_per_annotator_dict[label_and_id]['tokens'].append(row['token'])
@@ -85,7 +85,7 @@ def main():
     dict_of_dicts_per_file_annotator = dict()
     for annotator in annotator_names:
         for file_id in set(df['file_id']):
-            dict_of_dicts_per_file_annotator[f'{annotator}_{file_id}'] = get_dict_per_file_per_annotator(df, annotator, file_id)
+            dict_of_dicts_per_file_annotator['{}_{}'.format(annotator, file_id)] = get_dict_per_file_per_annotator(df, annotator, file_id)
 
     # Join the dictionaries to form one cleaned dictionary with identifiers containing file_id and start, end index
     data = join_dicts_on_label_and_index(dict_of_dicts_per_file_annotator)
