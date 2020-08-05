@@ -73,7 +73,11 @@ def join_dicts_on_label_and_index(dict_of_dicts):
     return gathered_dict
 
 def main():
-    df = pd.read_pickle('token_level_df.pkl')
+    # DEFINE PATHS
+    input_file = 'token_level_df.pkl'       # Input pkl containing df of tokens with labels for all annotators
+    output_file = 'label_level_df.pkl'      # Output pkl
+
+    df = pd.read_pickle(input_file)
     annotator_names = ['avelli', 'bos', 'meskers']
     # annotator_names = ['avelli', 'bos', 'katsburg', 'meskers', 'opsomer', 'swartjes', 'vanderpas', 'vervaart']
 
@@ -94,7 +98,7 @@ def main():
     df_new = pd.DataFrame.from_dict(data, orient='index')
     df_new['annotator_count'] = df_new.apply(lambda row: len(row['annotators']), axis=1)
 
-    df_new.to_pickle('label_level_df.pkl')
+    df_new.to_pickle(output_file)
 
 if __name__ == '__main__':
     main()

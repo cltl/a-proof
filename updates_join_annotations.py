@@ -77,8 +77,13 @@ def open_df_from_tsv(filename):
     return df
 
 
-def main(): 
-    for index, filename in enumerate(Path('sample_data').glob('**/*.tsv')):
+def main():
+    # DEFINE PATHS
+    folder_path = 'sample_data'
+    output_pkl_path = 'token_level_df.pkl'
+
+
+    for index, filename in enumerate(Path(folder_path).glob('**/*.tsv')):
         """
         Creates pd.DataFrame by joining files from different annotators and different documents to one
         large df
@@ -107,7 +112,7 @@ def main():
                 df = pd.concat([df, df_temp], join='inner')
 
                 
-    df.to_pickle('token_level_df.pkl')
+    df.to_pickle(output_pkl_path)
     
 if __name__ == "__main__":
     main()

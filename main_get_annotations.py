@@ -1,11 +1,15 @@
 import pandas as pd
 from pathlib import Path
 from updates_join_annotations import open_df_from_tsv
-import updates_get_average_scores_per_label as scores
+#import updates_get_average_scores_per_label as scores
 
             
-def main(): 
-    for index, filename in enumerate(Path('./sample_data').glob('**/*.tsv')):
+def main():
+    # DEFINE PATHS
+    folder_path = './sample_data'           # Folder path from which to find the annotated tsv files
+    output_pkl_path = 'token_level_df.pkl'  # Output path to which to write the df in pkl format
+
+    for index, filename in enumerate(Path(folder_path).glob('**/*.tsv')):
         """
         Creates pd.DataFrame by joining files from different annotators and different documents to one
         large df
@@ -41,7 +45,7 @@ def main():
             except:
                 continue
                 
-    df.to_pickle('token_level_df.pkl')
+    df.to_pickle(output_pkl_path)
 
 
 if __name__ == "__main__":
