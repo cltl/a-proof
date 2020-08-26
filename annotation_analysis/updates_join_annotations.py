@@ -79,8 +79,8 @@ def open_df_from_tsv(filename):
 
 def main():
     # DEFINE PATHS
-    folder_path = 'sample_data'
-    output_pkl_path = 'token_level_df.pkl'
+    folder_path = '../sample_data/INCEpTION_output'
+    output_pkl_path = '../sample_data/token_level_df.pkl'
 
 
     for index, filename in enumerate(Path(folder_path).glob('**/*.tsv')):

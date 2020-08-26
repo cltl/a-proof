@@ -74,16 +74,17 @@ def join_dicts_on_label_and_index(dict_of_dicts):
 
 def main():
     # DEFINE PATHS
-    # input_file = 'token_level_df.pkl'       # Input pkl containing df of tokens with labels for all annotators
-    # output_file = 'label_level_df.pkl'      # Output pkl
+    input_file = './sample_data/token_level_df.pkl'       # Input pkl containing df of tokens with labels for all annotators
+    output_file = './sample_data/label_level_df.pkl'      # Output pkl
+    output_file_xlsx = './sample_data/label_level_df.xlsx' # Output xlsx
     
-    input_file = './../../data/processed_data/week_30/token_level_df.pkl'      # Input pkl containing df of tokens with labels for all annotators
-    output_file = './../../data/processed_data/week_30/label_level_df.pkl'      # Output pkl
-    output_file_xlsx = './../../data/processed_data/week_30/label_level_df.xlsx'      # Output pkl
+    # input_file = './../../data/processed_data/week_30/token_level_df.pkl'      # Input pkl containing df of tokens with labels for all annotators
+    # output_file = './../../data/processed_data/week_30/label_level_df.pkl'      # Output pkl
+    # output_file_xlsx = './../../data/processed_data/week_30/label_level_df.xlsx'      # Output xlsx
 
     df = pd.read_pickle(input_file)
-    # annotator_names = ['avelli', 'bos', 'meskers']
-    annotator_names = ['avelli', 'bos', 'katsburg', 'meskers', 'opsomer', 'swartjes', 'vanderpas', 'vervaart']
+    annotator_names = ['avelli', 'bos', 'meskers']
+    # annotator_names = ['avelli', 'bos', 'katsburg', 'meskers', 'opsomer', 'swartjes', 'vanderpas', 'vervaart']
 
     # Change format of labels in f'labels_{name}' columns to list format
     df = change_labels_to_list_format(df)
@@ -101,6 +102,8 @@ def main():
     # Creates df to write to pkl
     df_new = pd.DataFrame.from_dict(data, orient='index')
     df_new['annotator_count'] = df_new.apply(lambda row: len(row['annotators']), axis=1)
+
+    df_new.sort_values(by=['file_id', 'start_index', 'end_index'])
 
     df_new.to_pickle(output_file)
     df_new.to_excel(output_file_xlsx)
