@@ -7,11 +7,11 @@ The following steps are needed for analysing the annotations:
 
 1. Export of the individual project in Inception using the in WebAnno TSV v3.2 (webAnnot v3.x) format
 
-2. Run the script: python3 updates_join_annotations.py with the exported folders as the input
+2. Run the script: python3 annotation_analysis.updates_join_annotations.py with the exported folders as the input
 
 This script creates a token level Pandas data frame from all the annotation exported in TSV format. The data frame is saved as: token_level_df.pkl
 
-3. Run the script: python3 main_get_scores_v2.py taking the token_level_df.pkl as input
+3. Run the script: python3 annotation_analysis.main_get_scores.py taking the token_level_df.pkl as input
 
 This script derives a label level dataframe by joining all token annotations from different annotators that assigned the same label to the same token. The data frame is saved as label_level_df.pkl and as label_level_df.xlsx
 
@@ -23,7 +23,7 @@ After creating the label_level_df.xlsx, we need to do a few additional things:
 This can all be improved by exporting the dataframe to label_level_df.xlsx in the right way.
 
 
-4. Run the script: python3 Softboundaries_updated_analysis_code.ipynb
+4. Run the script: python3 annotation_analysis.Softboundaries_updated_analysis_code.ipynb
 
 The sorted excel file is used as as input for the soft boundary analysis
 
