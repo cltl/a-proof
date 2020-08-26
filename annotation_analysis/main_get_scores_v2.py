@@ -74,9 +74,9 @@ def join_dicts_on_label_and_index(dict_of_dicts):
 
 def main():
     # DEFINE PATHS
-    input_file = './sample_data/token_level_df.pkl'       # Input pkl containing df of tokens with labels for all annotators
-    output_file = './sample_data/label_level_df.pkl'      # Output pkl
-    output_file_xlsx = './sample_data/label_level_df.xlsx' # Output xlsx
+    input_file = '../sample_data/token_level_df.pkl'  # Input pkl containing df of tokens with labels for all annotators
+    output_file = '../sample_data/label_level_df.pkl'  # Output pkl
+    output_file_xlsx = '../sample_data/label_level_df.xlsx'  # Output xlsx
     
     # input_file = './../../data/processed_data/week_30/token_level_df.pkl'      # Input pkl containing df of tokens with labels for all annotators
     # output_file = './../../data/processed_data/week_30/label_level_df.pkl'      # Output pkl
