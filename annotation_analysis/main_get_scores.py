@@ -72,6 +72,15 @@ def join_dicts_on_label_and_index(dict_of_dicts):
 
     return gathered_dict
 
+def create_and_sort_df(data):
+    # Creates df to write to pkl
+    df_new = pd.DataFrame.from_dict(data, orient='index')
+    df_new['annotator_count'] = df_new.apply(lambda row: len(row['annotators']), axis=1)
+
+    df_new.sort_values(by=['file_id', 'start_index', 'end_index'])
+
+    return df_new
+
 def main():
     # DEFINE PATHS
     input_file = '../sample_data/token_level_df.pkl'  # Input pkl containing df of tokens with labels for all annotators
@@ -83,8 +92,9 @@ def main():
     # output_file_xlsx = './../../data/processed_data/week_30/label_level_df.xlsx'      # Output xlsx
 
     df = pd.read_pickle(input_file)
-    annotator_names = ['avelli', 'bos', 'meskers']
-    # annotator_names = ['avelli', 'bos', 'katsburg', 'meskers', 'opsomer', 'swartjes', 'vanderpas', 'vervaart']
+
+    # Find annotator names using columns starting with labels_
+    annotator_names = [x[7:] for x in df.columns if x.startswith('labels_')]
 
     # Change format of labels in f'labels_{name}' columns to list format
     df = change_labels_to_list_format(df)
@@ -99,12 +109,10 @@ def main():
     # Join the dictionaries to form one cleaned dictionary with identifiers containing file_id and start, end index
     data = join_dicts_on_label_and_index(dict_of_dicts_per_file_annotator)
 
-    # Creates df to write to pkl
-    df_new = pd.DataFrame.from_dict(data, orient='index')
-    df_new['annotator_count'] = df_new.apply(lambda row: len(row['annotators']), axis=1)
+    # Create dataframe from joined dictionaries. Sort on file id, start index, end index. Add annotator count column
+    df_new = create_and_sort_df(data)
 
-    df_new.sort_values(by=['file_id', 'start_index', 'end_index'])
-
+    # Write files
     df_new.to_pickle(output_file)
     df_new.to_excel(output_file_xlsx)
 
