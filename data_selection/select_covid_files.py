@@ -16,12 +16,12 @@ def select_ids(df_diagnoses, search_5=[], search_7=[]):
 
 
 def main():
-    output_filepath = '../sample_data/Covid_notities.csv'
+    output_filepath = '../../../data/Covid_notities.csv'
     # Read files
-    df_diagnoses = pd.read_excel("../sample_data/raw_data/Diagnoses.xlsx", header=None)
-    df_notities = pd.read_excel("../sample_data/raw_data/Notities.xlsx", header=None)
-    # df_diagnoses = pd.read_csv("FILEPATH_DIAGNOSES.csv", sep=';', header=None)
-    # df_notities = pd.read_csv("FILEPATH_NOTITIES.csv", sep=';', header=None)
+    # df_diagnoses = pd.read_excel("../sample_data/raw_data/Diagnoses.xlsx", header=None)
+    # df_notities = pd.read_excel("../sample_data/raw_data/Notities.xlsx", header=None)
+    df_diagnoses = pd.read_csv("../../../data/raw_data/2020/Diagnoses AMC.csv", sep=';', header=None)
+    df_notities = pd.read_csv("../../../data/raw_data/2020/Notities AMC.csv", sep=';', header=None)
 
     # Search queries
     search_5 = ['acute respiratoire aandoening door SARS-CoV-2',
