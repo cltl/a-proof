@@ -1,7 +1,5 @@
-import pandas as pd
 import glob
 from pathlib import Path
-
 
 
 def get_data_from_tsv(filename):
@@ -19,7 +17,6 @@ def get_data_from_tsv(filename):
     # Read file
     data = []
     with (filename).open() as infile:
-        #with open(filename, 'r', encoding = 'utf-8') as infile:
         for row in infile:
             # Skip rows starting with #
             if row.startswith('#'):
@@ -36,17 +33,11 @@ def get_data_from_tsv(filename):
             if len(split_row) == 5:
                 split_row.extend(['_'])
             elif len(split_row) == 4:
-                #print(len(split_row))
-                #print(filename)
                 split_row.extend(['_', '_'])
             
             elif len(split_row) == 3:
-                #print(split_row)
                 split_row.extend(['_', '_', '_'])
-                #continue
             elif len(spit_row!=6):
-                # print(len(split_row))
-                # print(split_row)
                 continue
             data.append(split_row)
             
@@ -67,7 +58,6 @@ def label_counter(data):
         
     # Return len of set -1 to account for no label ('_')
     return len(labels_set)-1
-
 
 
 def get_counts_for_annotator(annotator_folder):
@@ -105,6 +95,7 @@ def get_counts_for_annotator(annotator_folder):
     
     return annotator, file_count, total_label_count, lab_per_doc
 
+
 def main():
 
     # ADAPT EACH TIME
@@ -112,11 +103,11 @@ def main():
     date = "11_09_2020"
 
     # Create output file name
-    output_filename = folder_path+"annotator_monitoring_"+date+".csv"
+    output_filename = folder_path+"annotator_monitoring_"+date+".txt"
 
     # Write new file. Fill in header
     with open(output_filename, 'w') as outfile:
-            line = "Naam,Aantal documenten,Aantal labels, Gemiddeld aantal labels per document"
+            line = "Naam\tAantal documenten\tAantal labels\tGemiddeld aantal labels per document"
             outfile.write(line+"\n")
 
     # For annotator append info to file
@@ -128,8 +119,9 @@ def main():
             continue
         
         with open(output_filename, 'a') as outfile:
-            line = ",".join([annotator_name, str(file_count), str(label_count), str(lab_per_doc)])
+            line = "\t".join([annotator_name, str(file_count), str(label_count), str(lab_per_doc)])
             outfile.write(line+"\n")
-            
+
+
 if __name__ == "__main__":
     main()
