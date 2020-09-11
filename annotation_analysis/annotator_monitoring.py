@@ -103,7 +103,7 @@ def main():
     date = "11_09_2020"
 
     # Create output file name
-    output_filename = folder_path+"annotator_monitoring_"+date+".txt"
+    output_filename = "./annotator_monitoring_"+date+".txt"
 
     # Write new file. Fill in header
     with open(output_filename, 'w') as outfile:
