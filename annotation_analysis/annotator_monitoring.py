@@ -18,6 +18,7 @@ def get_data_from_tsv(filename):
     data = []
     with (filename).open() as infile:
         for row in infile:
+            print(filename)
             # Skip rows starting with #
             if row.startswith('#'):
                 continue
@@ -106,7 +107,7 @@ def extract_total_annotations_file(folder_path, output_filename):
     # For annotator append info to file
     for annotator_folder in glob.glob(folder_path+"*"):
         annotator_name, file_count, label_count, lab_per_doc = get_counts_for_annotator(annotator_folder)
-        
+        print(annotator_name)
         # Bug fix
         if annotator_name == "unknown":
             continue
@@ -124,7 +125,8 @@ def main():
     :return:
     """
     # ADAPT EACH TIME
-    folder_path = "./batch1_18_09_2020/"
+    #folder_path = "./batch1_18_09_2020/"
+    folder_path = './../../../data/uncleaned_data/batch1_18_09_2020/'   # Must end in "/"
     date = "18-09-2020"
     last_weeks_total_filepath = "./analysis_files/annotator_monitoring_total_11-09-2020.txt"
 

@@ -1,0 +1,9 @@
+Naam	Aantal documenten	Aantal labels	Gemiddeld aantal labels per document
+avelli	506	1825	3.61
+swartjes	156	520	3.33
+bos	370	1049	2.84
+meskers	641	3067	4.78
+vervaart	428	1317	3.08
+katsburg	323	996	3.08
+vanderpas	225	357	1.59
+opsomer	201	535	2.66
