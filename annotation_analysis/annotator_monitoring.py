@@ -1,6 +1,6 @@
 import glob
 from pathlib import Path
-
+import pandas as pd
 
 def get_data_from_tsv(filename):
     """
@@ -96,14 +96,7 @@ def get_counts_for_annotator(annotator_folder):
     return annotator, file_count, total_label_count, lab_per_doc
 
 
-def main():
-
-    # ADAPT EACH TIME
-    folder_path = "./batch1_11_09_2020/"
-    date = "11_09_2020"
-
-    # Create output file name
-    output_filename = "./annotator_monitoring_"+date+".txt"
+def extract_total_annotations_file(folder_path, output_filename):
 
     # Write new file. Fill in header
     with open(output_filename, 'w') as outfile:
@@ -121,6 +114,43 @@ def main():
         with open(output_filename, 'a') as outfile:
             line = "\t".join([annotator_name, str(file_count), str(label_count), str(lab_per_doc)])
             outfile.write(line+"\n")
+
+def main():
+    """
+    Calculates annotator progress since last update.
+    Counts labeled and locked documents and labels up to now, and writes to file.
+    Reads in previous file (from last week).
+    Calculates difference between last weeks counts and this weeks counts. Writes that to second file.
+    :return:
+    """
+    # ADAPT EACH TIME
+    folder_path = "./batch1_18_09_2020/"
+    date = "18-09-2020"
+    last_weeks_total_filepath = "./analysis_files/annotator_monitoring_total_11-09-2020.txt"
+
+    # Create output file name
+    total_annotations_filename = "./analysis_files/annotator_monitoring_total_" + date + ".txt"
+    difference_filename = "./analysis_files/annotator_monitoring_difference_" + date + ".txt"
+
+    extract_total_annotations_file(folder_path, total_annotations_filename)
+
+    df_previous_total = pd.read_csv(last_weeks_total_filepath, sep='\t', index_col="Naam").add_prefix('previous_')
+    df_current_total = pd.read_csv(total_annotations_filename, sep='\t', index_col="Naam").add_prefix('Totaal ')
+
+    # Remove duplicated annotator
+    df_previous_total = df_previous_total[~df_previous_total.index.duplicated(keep='first')]
+    df_current_total = df_current_total[~df_current_total.index.duplicated(keep='first')]
+
+    # Join dfs
+    df = pd.concat([df_previous_total, df_current_total], axis=1, sort=False)
+
+    # Calculate difference between last week and this week
+    df['Aantal documenten deze week'] = df['Totaal Aantal documenten'] - df['previous_Aantal documenten']
+    df['Aantal labels deze week'] = df['Totaal Aantal labels'] - df['previous_Aantal labels']
+
+    # Write file
+    df.to_csv(difference_filename, sep='\t', columns=['Totaal Aantal documenten', 'Totaal Aantal labels',
+                                                      'Aantal documenten deze week', 'Aantal labels deze week'])
 
 
 if __name__ == "__main__":
