@@ -18,7 +18,6 @@ def get_data_from_tsv(filename):
     data = []
     with (filename).open() as infile:
         for row in infile:
-            print(filename)
             # Skip rows starting with #
             if row.startswith('#'):
                 continue
@@ -107,7 +106,6 @@ def extract_total_annotations_file(folder_path, output_filename):
     # For annotator append info to file
     for annotator_folder in glob.glob(folder_path+"*"):
         annotator_name, file_count, label_count, lab_per_doc = get_counts_for_annotator(annotator_folder)
-        print(annotator_name)
         # Bug fix
         if annotator_name == "unknown":
             continue
