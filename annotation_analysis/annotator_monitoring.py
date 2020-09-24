@@ -124,18 +124,23 @@ def main():
     """
     # ADAPT EACH TIME
     #folder_path = "./batch1_18_09_2020/"
-    folder_path = './../../../data/uncleaned_data/batch1_18_09_2020/'   # Must end in "/"
-    date = "18-09-2020"
-    last_weeks_total_filepath = "./analysis_files/annotator_monitoring_total_11-09-2020.txt"
+    folder_path = './../../../data/uncleaned_data/batch1_24_09_2020/'   # Must end in "/"
+    date = "24-09-2020"
+    last_weeks_total_filepath = "./analysis_files/annotator_monitoring_total_18-09-2020.txt"
 
     # Create output file name
     total_annotations_filename = "./analysis_files/annotator_monitoring_total_" + date + ".txt"
     difference_filename = "./analysis_files/annotator_monitoring_difference_" + date + ".txt"
 
-    extract_total_annotations_file(folder_path, total_annotations_filename)
+    #extract_total_annotations_file(folder_path, total_annotations_filename)
 
     df_previous_total = pd.read_csv(last_weeks_total_filepath, sep='\t', index_col="Naam").add_prefix('previous_')
     df_current_total = pd.read_csv(total_annotations_filename, sep='\t', index_col="Naam").add_prefix('Totaal ')
+    
+    print("head_previous")
+    print(df_previous_total.head)
+    print("head_current")
+    print(df_current_total.head)
 
     # Remove duplicated annotator
     df_previous_total = df_previous_total[~df_previous_total.index.duplicated(keep='first')]
@@ -143,11 +148,16 @@ def main():
 
     # Join dfs
     df = pd.concat([df_previous_total, df_current_total], axis=1, sort=False)
+    
+    
 
     # Calculate difference between last week and this week
     df['Aantal documenten deze week'] = df['Totaal Aantal documenten'] - df['previous_Aantal documenten']
     df['Aantal labels deze week'] = df['Totaal Aantal labels'] - df['previous_Aantal labels']
 
+    print("head concat")
+    print(df.head) 
+    
     # Write file
     df.to_csv(difference_filename, sep='\t', columns=['Totaal Aantal documenten', 'Totaal Aantal labels',
                                                       'Aantal documenten deze week', 'Aantal labels deze week'])
