@@ -58,6 +58,7 @@ def main():
     # Create df with selected MDN ids
     df_selection = df_notities.loc[df_notities['Pat_id'].isin(MDN_ids)]
     
+    
     # Print statements for counts
     print("Aantal patient ids in search", len(MDN_ids))
     print("Patient ids die ook in notities staan", len(MDN_ids & set(df_notities['Pat_id'])))
