@@ -1,0 +1,9 @@
+	Totaal Aantal documenten	Totaal Aantal labels	Aantal documenten deze week	Aantal labels deze week
+vanderpas	283	498	36	89
+meskers	686	3433	0	55
+vervaart	526	1671	50	209
+bos	452	1335	46	179
+opsomer	339	862	112	261
+katsburg	434	1395	29	128
+swartjes	218	738	0	1
+avelli	613	2268	12	125
