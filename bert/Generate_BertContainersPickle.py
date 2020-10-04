@@ -6,38 +6,8 @@ import torch
 #from transformers import BertTokenizer, BertModel
 import numpy as np
 import pickle
-from annotation import Annotation
+from class_definitions import Annotation, BertContainer
 from pathlib import Path
-
-
-# Define BertContainer Class
-class BertContainer:
-    def __init__(self, key, annotator, sen_id, sen, encoding):
-        self.key = key
-        self.annotator = annotator
-        self.sen_id = sen_id
-        self.sen = sen
-        self.encoding = encoding
-        self.annot = []
-
-    
-    def add_anno(self, anno):
-        self.annot.append(anno)
-        
-    def print_container(self):
-        info = []
-        print(self.key)
-        print(self.annotator)
-        print(self.sen_id)
-        print(self.sen)
-        for anno in self.annot:
-            anno.print_annotation()
-        print(self.encoding)
-        
-        
-    def write_to_pkl(self):
-        self.dictionary = {self.key: [('annotator', self.annotator),('sen_id', self.sen_id),('sen', self.sen),('annotations', self.annot),('encoding', self.encoding)]}
-        return(self.dictionary)
 
 
 def read_tsv(filepath):
@@ -206,7 +176,8 @@ if __name__ == '__main__':
                 instance.add_anno(anno)
 
 
-            all_dicts.append(instance.write_to_pkl())
+            #all_dicts.append(instance.write_to_pkl())
+            all_dicts.append(instance)
 
 
         filename_out = folderpath_out +"Container_"+key+"_"+annotator+".pkl"
