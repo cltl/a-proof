@@ -103,9 +103,9 @@ def get_key_and_annotator(filepath):
     """
 
     annotator = filepath.stem
-    key = filepath.parent.stem
+    file_id = filepath.parent.stem
 
-    return key, annotator
+    return file_id, annotator
 
 
 def get_BERTje_encoding(sentence):
@@ -152,7 +152,7 @@ if __name__ == '__main__':
         # Read in data and get it in correct format
         data = read_tsv(filepath)
         text_list = get_sentence_lvl(data)
-        key, annotator = get_key_and_annotator(filepath)
+        file_id, annotator = get_key_and_annotator(filepath)
 
         all_dicts = []
         # For every sentence in the text
@@ -160,6 +160,7 @@ if __name__ == '__main__':
             # Extract sentence, sentence_id and encoding
             sen = sentence_obj[0]
             sen_id = sentence_obj[1][0].split('-')[0]
+            key = file_id + sen_id
             #encoding = get_BERTje_encoding(sen)
             encoding = 12345
 
@@ -176,7 +177,6 @@ if __name__ == '__main__':
                 instance.add_anno(anno)
 
 
-            #all_dicts.append(instance.write_to_pkl())
             all_dicts.append(instance)
 
 
