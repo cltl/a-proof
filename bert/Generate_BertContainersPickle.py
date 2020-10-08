@@ -3,7 +3,7 @@ To run on linux server first enter bert environment: source bert/bin/activate
 """
 
 import torch
-#from transformers import BertTokenizer, BertModel
+#from transformers import BertTokenizer, BertModel # change
 import numpy as np
 import pickle
 from class_definitions import Annotation, BertContainer
@@ -161,7 +161,7 @@ if __name__ == '__main__':
             sen = sentence_obj[0]
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
-            #encoding = get_BERTje_encoding(sen)
+            #encoding = get_BERTje_encoding(sen) # change
             encoding = 12345
 
             # Define BertContainer instance
