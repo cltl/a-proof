@@ -1,0 +1,19 @@
+{
+  "label_to_keywords": {
+  "D450": ["lopen", "loopt", "gelopen", "traplopen", "rolstoel", "gang", "armswing"],
+  "B455": ["energieniveau", "uitgeput", "fietsen", "moe", "conditie", "huishoudelijke", "boodschappen", "hardlopen", 
+            "uithoudingsvermogen", "vermoeibaarheid", "vermoeid", "inspanning", "oefeningen", "sport", "sporten"],
+  "B152": ["stemming", "affect", "droefheid", "geluk", "liefde", "vrees", "boosheid", "spannend",
+            "haat", "gespannenheid", "angst", "vreugde", "verdriet", "verdrietig", "motivatie", "boos",
+            "labiliteit", "emotie", "emotioneel", "emotionele", "vervlakking", "labiel", "stemmingswisselingen"],
+  "B840-859": ["beroep", "werk", "baan", "banen", "uitoefenen", "taak", "taken", "uitvoeren", "uitgevoerd", "werkplek", "inhuren", "sollicitatie", 
+                "solliciteren", "ontslag", "ontslaan", "werkgever", "baas", "Manager", "studie", "studeren", "uur", "uren"]
+},
+  "input_folder": "../../../Output_Conll_VUmc",
+  "suffix": ".conll",
+  "conll_delimiter": " ",
+  "index_column": 0,
+  "sample_size_per_label": 2000,
+  "output_path_index": "../../../index_VUmc.json",
+  "output_path_index_sample": "../../../index_sample.json"
+}
