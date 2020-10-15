@@ -1,0 +1,11 @@
+Total amount of documents: 3996
+Total amount of sentences: 271671
+Total amount of labels: 82832
+Amount of documents to disregard: 377
+Amount of domain_labels: 3643
+Total amount of sentences that contain labels: 76613
+Amount of sentences that contain domain labels: 3439
+Amount of sentences that contain domain and gradation label in same sentence: 2929
+Amount of sentences with repeated labels: 347
+Amount of sentences with repeated domain labels: 165
+{'type\\_Background': 29971, 'target': 6220, 'FAC 3': 133, '.D450: Lopen en zich verplaatsen': 1461, 'FAC 4': 703, '.B152: Stemming': 2182, 'STM 1': 1232, 'stm\\_reaction': 734, 'INS 3': 166, '.B455: Inspanningstolerantie': 778, '': 34395, 'view\\_Patient': 300, 'type\\_Implicit': 294, 'STM 2': 203, 'FAC 5': 140, 'INS 2': 134, 'INS 4': 111, 'INS 5': 146, 'lop\\_hulpmiddel': 340, 'disregard\\_file': 773, 'STM 0': 350, 'INS 1': 107, 'BER 4': 99, '.D840-859: Beroep en werk': 372, 'info\\_Third party': 510, 'STM 3': 244, '*': 122, 'view\\_Third party': 152, 'STM 4': 78, 'BER 3': 41, 'FAC 1': 35, 'FAC 2': 66, 'BER 0': 80, 'FAC 0': 89, 'INS 0': 26, 'BER 2': 36, 'BER 1': 9}

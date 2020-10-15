@@ -40,6 +40,7 @@ def get_sentence_lvl(data):
     :return: List of list. Text separated by sentence.
     """
     text_list = []
+    sentence_list = []
 
     for index, line_list in enumerate(data):
         # If line is whole sentence
@@ -88,7 +89,7 @@ def get_labels_tokens(sentence_obj):
         label_token_dict[label] = []
         # Loop through sentence, if the row has the label, then create token tuple and add to dict
         for index, row in enumerate(sentence_obj):
-            if label in row[3]:
+            if len(row) > 3 and label in row[3]:
                 token_tuple = ('t' + str(index), row[2])
                 label_token_dict[label].append(token_tuple)
 
@@ -142,8 +143,11 @@ if __name__ == '__main__':
     writes a list with dictionaries per sentence to pkl file
     """
     # Define folder path to data
-    folderpath_in = "../sample_data/INCEpTION_output/"
-    folderpath_out = "../sample_data/BERTContainers/"
+    #folderpath_in = "../sample_data/INCEpTION_output/"
+    #folderpath_out = "../sample_data/BERTContainers/"
+    
+    folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
+    folderpath_out = "../../Non_covid_data_15oct/BertContainers_Batch1/"
 
     folderpath_in = Path(folderpath_in)
     file_list = folderpath_in.rglob('*.tsv')

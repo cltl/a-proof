@@ -7,8 +7,9 @@ from collections import Counter
 
 # pkl_filepath = '../sample_data/BERTContainers/Container_notities_2017_deel1_cleaned.csv---25032_avelli.pkl'
 def main():
-    pkl_folderpath = '../sample_data/BERTContainers/'
-    output_file = 'general_stats.txt'
+    #pkl_folderpath = '../sample_data/BERTContainers/'
+    pkl_folderpath = "../../Non_covid_data_15oct/BertContainers_Batch1/"
+    output_file = '../sample_data/general_stats.txt'
 
     domain_set = {'.B152: Stemming', '.D450: Lopen en zich verplaatsen'}
 
@@ -29,6 +30,7 @@ def main():
     double_domain_label = 0
     document_with_background = 0
     document_with_target = 0
+    disregard_file = 0
     label_count_dict = dict()
 
     for pkl_filepath in glob.glob(pkl_folderpath + '*'):
@@ -75,25 +77,33 @@ def main():
                     elif '.D450: Lopen en zich verplaatsen' in annotation_set and len(
                             annotation_set & gradation_lop) != 0:
                         domain_and_gradation_same_sentence += 1
-                    # TODO add other domains
+                    elif '.B455: Inspanningstolerantie' in annotation_set and len(
+                            annotation_set & gradation_lop) != 0:
+                        domain_and_gradation_same_sentence += 1
+                    elif '.D840-859: Beroep en werk' in annotation_set and len(
+                            annotation_set & gradation_lop) != 0:
+                        domain_and_gradation_same_sentence += 1
 
         if 'type\\_Background' in document_annotation_set:
             document_with_background += 1
 
-        if 'type\\_Target' in document_annotation_set:  # TODO check spelling
+        if 'target' in document_annotation_set: 
             document_with_target += 1
+            
+        if 'disregard\\_file' in document_annotation_set:
+            disregard_file += 1
+        
 
     domain_labels_count = 0
     for label in domain_set:
         domain_labels_count += label_count_dict[label]
 
     with open(output_file, 'a') as outfile:
-        outfile.write('Total amount of sentences: ' + str(sentences_count) +'\n')
-
-        outfile.write('Total amount of sentences: ' + str(sentences_count) +'\n')
         outfile.write('Total amount of documents: ' + str(doc_count) +'\n')
+        outfile.write('Total amount of sentences: ' + str(sentences_count) +'\n')
         outfile.write('Total amount of labels: ' + str(sum(label_count_dict.values())) +'\n')
 
+        outfile.write('Amount of documents to disregard: ' + str(disregard_file) +'\n')
 
         outfile.write('Amount of domain_labels: ' + str(domain_labels_count) +'\n')
         outfile.write('Total amount of sentences that contain labels: ' + str(sentences_with_labels) +'\n')
