@@ -109,12 +109,7 @@ def get_key_and_annotator(filepath):
     return file_id, annotator
 
 
-def get_BERTje_encoding(sentence):
-    #import model
-    bertje='wietsedv/bert-base-dutch-cased'
-    bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
-    bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
-    
+def get_BERTje_encoding(sentence, model, tokenizer):
     #get progressed inputs
     marked_text = '[CLS] ' + sentence + ' [SEP]'
     tokenized_text = bertje_tokenizer.tokenize(marked_text)
@@ -146,6 +141,10 @@ if __name__ == '__main__':
     #folderpath_in = "../sample_data/INCEpTION_output/"
     #folderpath_out = "../sample_data/BERTContainers/"
     
+    bertje='wietsedv/bert-base-dutch-cased'
+    bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
+    bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
+    
     folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
     folderpath_out = "../../Non_covid_data_15oct/BertContainers_Batch1/"
 
@@ -168,7 +167,7 @@ if __name__ == '__main__':
                 sen = sentence_obj[0]
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
-            encoding = get_BERTje_encoding(sen) # change
+            encoding = get_BERTje_encoding(sen, bertje_model, bertje_tokenizer) # change
             #encoding = 12345
 
             # Define BertContainer instance
