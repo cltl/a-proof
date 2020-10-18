@@ -3,7 +3,7 @@ To run on linux server first enter bert environment: source bert/bin/activate
 """
 
 import torch
-#from transformers import BertTokenizer, BertModel # change
+from transformers import BertTokenizer, BertModel # change
 import numpy as np
 import pickle
 from class_definitions import Annotation, BertContainer
@@ -162,11 +162,14 @@ if __name__ == '__main__':
         # For every sentence in the text
         for sentence_obj in text_list:
             # Extract sentence, sentence_id and encoding
-            sen = sentence_obj[0]
+            if sentence_obj[0] != str:
+                sen='-'
+            else:
+                sen = sentence_obj[0]
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
-            #encoding = get_BERTje_encoding(sen) # change
-            encoding = 12345
+            encoding = get_BERTje_encoding(sen) # change
+            #encoding = 12345
 
             # Define BertContainer instance
             instance = BertContainer(key, annotator, sen_id, sen, encoding)
@@ -184,7 +187,7 @@ if __name__ == '__main__':
             all_dicts.append(instance)
 
 
-        filename_out = folderpath_out +"Container_"+key+"_"+annotator+".pkl"
+        filename_out = folderpath_out +"Container_"+key+"__"+annotator+".pkl"
         fil = open(filename_out, 'wb')
         pickle.dump(all_dicts, fil)
         fil.close()
