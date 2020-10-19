@@ -86,6 +86,7 @@ def lightWeightReader(input_dir):
                 for anno in annot:
                     label = anno.label
                     #Maybe try to only append "type\\_Background" for binary classification?
+                    #This works if you append 0 for no label and 1 for type\\_Background
                     list_annos.append(label)
             list_labels.append(list_annos)
         
