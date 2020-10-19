@@ -63,13 +63,21 @@ def split_files(source_dir, trainsize):
             
             
 if __name__ == '__main__':
-    copy_files(''All_Info_Batch1', ''All_Info_Batch1_Sorted')
+    copy_files('All_Info_Batch1_new', 'All_Info_Batch1_Sorted_new')
     print("Completed sorting and copying, start splitting...")
     
     result = split_files('All_Info_Batch1_Sorted', 0.80)
     print("Completed splitting")
-    print(result[0])
-    print(result[1])
+
+    train_paths = result[0]
+    test_paths = result[1]
+    
+    #copy files to train folder and test folder
+    for path in train_paths:
+        shutil.copy(path, "traindata_batch1") 
+        
+    for path in test_paths:
+        shutil.copy(path, "testdata_batch1")
     
 
     
