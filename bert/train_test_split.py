@@ -40,7 +40,7 @@ def copy_files(input_dir, output_dir):
     
     for l in list_per_annotator:
         for item in l:
-            shutil.copy(input_dir+'/'+item, output_dir+"/"+item.split('__')[1]) 
+            shutil.copy(input_dir+'/'+item, output_dir+"/"+item.split('__')[1][:-4]) 
             
             
 def split_files(source_dir, trainsize):
@@ -63,10 +63,10 @@ def split_files(source_dir, trainsize):
             
             
 if __name__ == '__main__':
-    copy_files('Test_Output', 'Test_Output_sorted')
+    copy_files(''All_Info_Batch1', ''All_Info_Batch1_Sorted')
     print("Completed sorting and copying, start splitting...")
     
-    result = split_files('Test_Output_sorted', 0.67)
+    result = split_files('All_Info_Batch1_Sorted', 0.80)
     print("Completed splitting")
     print(result[0])
     print(result[1])
