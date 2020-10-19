@@ -160,11 +160,8 @@ if __name__ == '__main__':
         all_dicts = []
         # For every sentence in the text
         for sentence_obj in text_list:
-            # Extract sentence, sentence_id and encoding
-            if sentence_obj[0] != str:
-                sen='-'
-            else:
-                sen = sentence_obj[0]
+            # Extract sentence, sentence_id and encoding           
+            sen = str(sentence_obj[0])
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
             encoding = get_BERTje_encoding(sen, bertje_model, bertje_tokenizer) # change
