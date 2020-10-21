@@ -3,7 +3,7 @@ To run on linux server first enter bert environment: source bert/bin/activate
 """
 
 import torch
-from transformers import BertTokenizer, BertModel
+#from transformers import BertTokenizer, BertModel
 import numpy as np
 import pickle
 from class_definitions import Annotation, BertContainer
@@ -132,25 +132,31 @@ def get_BERTje_encoding(sentence, model, tokenizer):
 
     return(hidden_states)
 
-
+def check_first_sentence_contains_label(text_list, label):
+    contains_label = False
+    for label in get_labels_tokens(text_list[0]):
+        if label.startswith(label):
+            contains_label = True
+    return contains_label
 
 if __name__ == '__main__':
     """
     writes a list with dictionaries per sentence to pkl file
     """
     # Define folder path to data
-    # folderpath_in = "../sample_data/INCEpTION_output/"
-    # folderpath_out = "../sample_data/BERTContainers_slow/"
+    folderpath_in = "../sample_data/INCEpTION_output/"
+    folderpath_out = "../sample_data/BERTContainers_slow/"
 
     # TODO: remove later
     begin_time = datetime.datetime.now()
     print(begin_time)
-    bertje='wietsedv/bert-base-dutch-cased'
-    bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
-    bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
+    # chage
+    # bertje='wietsedv/bert-base-dutch-cased'
+    # bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
+    # bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
 
-    folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
-    folderpath_out = "../../Non_covid_data_15oct/BertContainers_Batch1/"
+    # folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
+    # folderpath_out = "../../Non_covid_data_15oct/BertContainers_Batch1/"
 
     folderpath_in = Path(folderpath_in)
     file_list = folderpath_in.rglob('*.tsv')
@@ -160,6 +166,11 @@ if __name__ == '__main__':
         data = read_tsv(filepath)
         text_list = get_sentence_lvl(data)
         file_id, annotator = get_key_and_annotator(filepath)
+
+        print(filepath)
+
+        if check_first_sentence_contains_label(text_list, "disregard\\_file") == True:
+            continue
 
         all_dicts = []
         # For every sentence in the text
@@ -192,5 +203,5 @@ if __name__ == '__main__':
         pickle.dump(all_dicts, fil)
         fil.close()
 
-        # TODO: remove later
+        TODO: remove later
     print(datetime.datetime.now() - begin_time)
