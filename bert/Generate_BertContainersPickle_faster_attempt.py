@@ -3,12 +3,13 @@ To run on linux server first enter bert environment: source bert/bin/activate
 """
 
 import torch
-from transformers import BertTokenizer, BertModel
+from transformers import BertTokenizer, BertModel # change
 import numpy as np
-import pickle
 from class_definitions import Annotation, BertContainer
 from pathlib import Path
+import gzip, pickle, pickletools
 import datetime
+
 
 
 def read_tsv(filepath):
@@ -140,11 +141,11 @@ if __name__ == '__main__':
     """
     # Define folder path to data
     # folderpath_in = "../sample_data/INCEpTION_output/"
-    # folderpath_out = "../sample_data/BERTContainers_slow/"
+    # folderpath_out = "../sample_data/BERTContainers_fast/"
 
     # TODO: remove later
     begin_time = datetime.datetime.now()
-    print(begin_time)
+
     bertje='wietsedv/bert-base-dutch-cased'
     bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
     bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
@@ -169,7 +170,7 @@ if __name__ == '__main__':
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
             encoding = get_BERTje_encoding(sen, bertje_model, bertje_tokenizer) # change
-            #encoding = 12345
+            # encoding = 12345
 
             # Define BertContainer instance
             instance = BertContainer(key, annotator, sen_id, sen, encoding)
@@ -188,9 +189,11 @@ if __name__ == '__main__':
 
 
         filename_out = folderpath_out +"Container_"+key+"__"+annotator+".pkl"
-        fil = open(filename_out, 'wb')
-        pickle.dump(all_dicts, fil)
-        fil.close()
 
-        # TODO: remove later
+        with gzip.open(filename_out, "wb") as f:
+            pickled = pickle.dumps(all_dicts)
+            optimized_pickle = pickletools.optimize(pickled)
+            f.write(optimized_pickle)
+
+    # TODO: remove later
     print(datetime.datetime.now() - begin_time)
