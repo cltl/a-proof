@@ -73,13 +73,14 @@ def lightWeightReader(input_dir):
         for container in info_note:
             encoding = container.encoding
             # Small change to allow it to work for sample data
-            if type(encoding) != int:
-                hs = encoding[-4:][0]
-                sen_embedding = torch.mean(hs, dim=0)
-                instance_features = sen_embedding
-            else:
-                instance_features = [1,2,3,4,5,6,7,8,9]
-            list_features.append(instance_features)
+            #if type(encoding) != int:
+            hs = encoding[-4:][0]
+            sen_embedding = torch.mean(hs, dim=0)
+            instance_features = sen_embedding
+            array = instance_features.numpy()
+            #else:
+            #    instance_features = [1,2,3,4,5,6,7,8,9]
+            list_features.append(array)
             
             list_annos = []
             annot = container.annot
