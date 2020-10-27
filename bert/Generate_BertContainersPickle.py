@@ -3,7 +3,7 @@ To run on linux server first enter bert environment: source bert/bin/activate
 """
 
 import torch
-#from transformers import BertTokenizer, BertModel # change
+from transformers import BertTokenizer, BertModel # change
 import numpy as np
 import pickle
 from class_definitions import Annotation, BertContainer
@@ -109,11 +109,7 @@ def get_key_and_annotator(filepath):
     return file_id, annotator
 
 
-def get_BERTje_encoding(sentence):
-    #import model
-    bertje='wietsedv/bert-base-dutch-cased'
-    bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
-    bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
+def get_BERTje_encoding(sentence, model, tokenizer):
     
     #get progressed inputs
     marked_text = '[CLS] ' + sentence + ' [SEP]'
@@ -145,9 +141,12 @@ if __name__ == '__main__':
     # Define folder path to data
     #folderpath_in = "../sample_data/INCEpTION_output/"
     #folderpath_out = "../sample_data/BERTContainers/"
+    bertje='wietsedv/bert-base-dutch-cased'
+    bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
+    bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
     
     folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
-    folderpath_out = "../../Non_covid_data_15oct/BertContainers_Batch1/"
+    folderpath_out = "../../Non_covid_data_15oct/All_Info_Batch1_new/"
 
     folderpath_in = Path(folderpath_in)
     file_list = folderpath_in.rglob('*.tsv')
@@ -161,12 +160,19 @@ if __name__ == '__main__':
         all_dicts = []
         # For every sentence in the text
         for sentence_obj in text_list:
+
             # Extract sentence, sentence_id and encoding
-            sen = sentence_obj[0]
+           
+           #if sentence_obj[0] != str:
+            #    sen='-'
+            #else:
+                #sen = sentence_obj[0]
+                
+            sen = str(sentence_obj[0])
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
-            #encoding = get_BERTje_encoding(sen) # change
-            encoding = 12345
+            encoding = get_BERTje_encoding(sen, bertje_model, bertje_tokenizer) # change
+            #encoding = 12345
 
             # Define BertContainer instance
             instance = BertContainer(key, annotator, sen_id, sen, encoding)
@@ -184,7 +190,7 @@ if __name__ == '__main__':
             all_dicts.append(instance)
 
 
-        filename_out = folderpath_out +"Container_"+key+"_"+annotator+".pkl"
+        filename_out = folderpath_out +"Container_"+key+"__"+annotator+".pkl"
         fil = open(filename_out, 'wb')
         pickle.dump(all_dicts, fil)
         fil.close()
