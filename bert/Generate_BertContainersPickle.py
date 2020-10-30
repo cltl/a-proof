@@ -1,13 +1,18 @@
-""" 
+"""
 To run on linux server first enter bert environment: source bert/bin/activate
 """
 
 import torch
+<<<<<<< HEAD
 from transformers import BertTokenizer, BertModel # change
+=======
+#from transformers import BertTokenizer, BertModel
+>>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
 import numpy as np
 import pickle
 from class_definitions import Annotation, BertContainer
 from pathlib import Path
+import datetime
 
 
 def read_tsv(filepath):
@@ -35,7 +40,7 @@ def read_tsv(filepath):
 def get_sentence_lvl(data):
     """
     Creates list of lists on sentence level. Each element of resulting list is a list where the first element
-    is a str of the sentence. The second element is a list of the rows of tokens. 
+    is a str of the sentence. The second element is a list of the rows of tokens.
     :param data: List of list with sentence elements starting with '#Text='
     :return: List of list. Text separated by sentence.
     """
@@ -64,8 +69,8 @@ def get_sentence_lvl(data):
 
 def get_labels_tokens(sentence_obj):
     """
-    Collects tokens related to same label. First loops through all tokens in sentence to collect all labels in a set. 
-    Then loops through labels and through all tokens in a sentence to gather the tokens with that label. 
+    Collects tokens related to same label. First loops through all tokens in sentence to collect all labels in a set.
+    Then loops through labels and through all tokens in a sentence to gather the tokens with that label.
     This code could be made more efficient.
     :param sentence: List containing rows which belong to a single sentence.
     :return: dictionary of labels with matching tokens {'label_id': [('t1', 'token_1'), ('t2', 'token_2')], ...}
@@ -81,7 +86,7 @@ def get_labels_tokens(sentence_obj):
                 row[3] = row[3].split('|')
             # Add label to set
             label_set.update(row[3])
-    
+
     # Create dictionary to match label to tokens
     label_token_dict = dict()
     # Loop through labels and create dictionary entry
@@ -110,35 +115,44 @@ def get_key_and_annotator(filepath):
 
 
 def get_BERTje_encoding(sentence, model, tokenizer):
+<<<<<<< HEAD
     
+=======
+>>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
     #get progressed inputs
     marked_text = '[CLS] ' + sentence + ' [SEP]'
     tokenized_text = bertje_tokenizer.tokenize(marked_text)
     token_ids = bertje_tokenizer.convert_tokens_to_ids(tokenized_text)
     segment_ids = [1] * len(tokenized_text)
-    
+
     #convert inputs to PyTorch tensors
     segments_tensors = torch.tensor([segment_ids])
     tokens_tensor = torch.tensor([token_ids])
-  
+
     #run sentence through BERTje and collect all hidden states from all 12 layers
     with torch.no_grad():
         outputs = bertje_model(tokens_tensor, segments_tensors)
         hidden_states = outputs[2]
-    
-    #sum last 4 layers to get sentence embedding 
+
+    #sum last 4 layers to get sentence embedding
     #token_vecs = hidden_states[-4:][0]
     #sentence_embedding = torch.mean(token_vecs, dim=0)
-    
+
     return(hidden_states)
 
-    
+def check_first_sentence_contains_label(text_list, label):
+    contains_label = False
+    for label in get_labels_tokens(text_list[0]):
+        if label.startswith(label):
+            contains_label = True
+    return contains_label
 
 if __name__ == '__main__':
-    """    
+    """
     writes a list with dictionaries per sentence to pkl file
     """
     # Define folder path to data
+<<<<<<< HEAD
     #folderpath_in = "../sample_data/INCEpTION_output/"
     #folderpath_out = "../sample_data/BERTContainers/"
     bertje='wietsedv/bert-base-dutch-cased'
@@ -147,6 +161,21 @@ if __name__ == '__main__':
     
     folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
     folderpath_out = "../../Non_covid_data_15oct/All_Info_Batch1_new/"
+=======
+    folderpath_in = "../sample_data/INCEpTION_output/"
+    folderpath_out = "../sample_data/BERTContainers_slow/"
+
+    # TODO: remove later
+    begin_time = datetime.datetime.now()
+    print(begin_time)
+    # chage
+    # bertje='wietsedv/bert-base-dutch-cased'
+    # bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
+    # bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
+
+    # folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
+    # folderpath_out = "../../Non_covid_data_15oct/BertContainers_Batch1/"
+>>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
 
     folderpath_in = Path(folderpath_in)
     file_list = folderpath_in.rglob('*.tsv')
@@ -157,17 +186,25 @@ if __name__ == '__main__':
         text_list = get_sentence_lvl(data)
         file_id, annotator = get_key_and_annotator(filepath)
 
+        print(filepath)
+
+        if check_first_sentence_contains_label(text_list, "disregard\\_file") == True:
+            continue
+
         all_dicts = []
         # For every sentence in the text
         for sentence_obj in text_list:
 
             # Extract sentence, sentence_id and encoding
+<<<<<<< HEAD
            
            #if sentence_obj[0] != str:
             #    sen='-'
             #else:
                 #sen = sentence_obj[0]
                 
+=======
+>>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
             sen = str(sentence_obj[0])
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
@@ -194,3 +231,6 @@ if __name__ == '__main__':
         fil = open(filename_out, 'wb')
         pickle.dump(all_dicts, fil)
         fil.close()
+
+        TODO: remove later
+    print(datetime.datetime.now() - begin_time)

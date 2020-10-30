@@ -1,5 +1,6 @@
-Total amount of documents: 3996
 Total amount of sentences: 271671
+Total amount of sentences: 271671
+Total amount of documents: 3996
 Total amount of labels: 82832
 Amount of documents to disregard: 377
 Amount of domain_labels: 3643
