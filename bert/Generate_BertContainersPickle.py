@@ -3,11 +3,7 @@ To run on linux server first enter bert environment: source bert/bin/activate
 """
 
 import torch
-<<<<<<< HEAD
 from transformers import BertTokenizer, BertModel # change
-=======
-#from transformers import BertTokenizer, BertModel
->>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
 import numpy as np
 import pickle
 from class_definitions import Annotation, BertContainer
@@ -115,10 +111,6 @@ def get_key_and_annotator(filepath):
 
 
 def get_BERTje_encoding(sentence, model, tokenizer):
-<<<<<<< HEAD
-    
-=======
->>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
     #get progressed inputs
     marked_text = '[CLS] ' + sentence + ' [SEP]'
     tokenized_text = bertje_tokenizer.tokenize(marked_text)
@@ -140,11 +132,12 @@ def get_BERTje_encoding(sentence, model, tokenizer):
 
     return(hidden_states)
 
-def check_first_sentence_contains_label(text_list, label):
+def check_any_sentence_contains_label(text_list, label):
     contains_label = False
-    for label in get_labels_tokens(text_list[0]):
-        if label.startswith(label):
-            contains_label = True
+    for sentence in text_list:
+        for label in get_labels_tokens(sentence):
+            if label.startswith(label):
+                contains_label = True
     return contains_label
 
 if __name__ == '__main__':
@@ -152,7 +145,6 @@ if __name__ == '__main__':
     writes a list with dictionaries per sentence to pkl file
     """
     # Define folder path to data
-<<<<<<< HEAD
     #folderpath_in = "../sample_data/INCEpTION_output/"
     #folderpath_out = "../sample_data/BERTContainers/"
     bertje='wietsedv/bert-base-dutch-cased'
@@ -161,21 +153,7 @@ if __name__ == '__main__':
     
     folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
     folderpath_out = "../../Non_covid_data_15oct/All_Info_Batch1_new/"
-=======
-    folderpath_in = "../sample_data/INCEpTION_output/"
-    folderpath_out = "../sample_data/BERTContainers_slow/"
 
-    # TODO: remove later
-    begin_time = datetime.datetime.now()
-    print(begin_time)
-    # chage
-    # bertje='wietsedv/bert-base-dutch-cased'
-    # bertje_tokenizer = BertTokenizer.from_pretrained(bertje)
-    # bertje_model = BertModel.from_pretrained(bertje, output_hidden_states = True)
-
-    # folderpath_in = "../../Non_covid_data_15oct/Inception_Output_Batch1/"
-    # folderpath_out = "../../Non_covid_data_15oct/BertContainers_Batch1/"
->>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
 
     folderpath_in = Path(folderpath_in)
     file_list = folderpath_in.rglob('*.tsv')
@@ -188,7 +166,7 @@ if __name__ == '__main__':
 
         print(filepath)
 
-        if check_first_sentence_contains_label(text_list, "disregard\\_file") == True:
+        if check_any_sentence_contains_label(text_list, "disregard\\_file") == True:
             continue
 
         all_dicts = []
@@ -196,15 +174,6 @@ if __name__ == '__main__':
         for sentence_obj in text_list:
 
             # Extract sentence, sentence_id and encoding
-<<<<<<< HEAD
-           
-           #if sentence_obj[0] != str:
-            #    sen='-'
-            #else:
-                #sen = sentence_obj[0]
-                
-=======
->>>>>>> 6a54acf265de9a6ba6e732b0dbb0654d3472f7f3
             sen = str(sentence_obj[0])
             sen_id = sentence_obj[1][0].split('-')[0]
             key = file_id + sen_id
