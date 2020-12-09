@@ -1,0 +1,507 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sklearn.metrics import cohen_kappa_score\n",
+    "from sklearn.metrics import confusion_matrix\n",
+    "\n",
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import os, random, glob, json, re\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 204,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 5968 entries, 0 to 5967\n",
+      "Data columns (total 3 columns):\n",
+      " #   Column      Non-Null Count  Dtype \n",
+      "---  ------      --------------  ----- \n",
+      " 0   note_id     5968 non-null   object\n",
+      " 1   sen_tok_id  5968 non-null   object\n",
+      " 2   annotation  4938 non-null   object\n",
+      "dtypes: object(3)\n",
+      "memory usage: 140.0+ KB\n",
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 5968 entries, 0 to 5967\n",
+      "Data columns (total 3 columns):\n",
+      " #   Column      Non-Null Count  Dtype \n",
+      "---  ------      --------------  ----- \n",
+      " 0   note_id     5968 non-null   object\n",
+      " 1   sen_tok_id  5968 non-null   object\n",
+      " 2   annotation  4424 non-null   object\n",
+      "dtypes: object(3)\n",
+      "memory usage: 140.0+ KB\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>note_id</th>\n",
+       "      <th>sen_tok_id</th>\n",
+       "      <th>annotation</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>VUmc--1725--1051081--420909191--2020-05-08--q1...</td>\n",
+       "      <td>1-1</td>\n",
+       "      <td>disregard\\_file</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>VUmc--1725--1051081--420909191--2020-05-08--q1...</td>\n",
+       "      <td>1-2</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>VUmc--1725--1051081--420909191--2020-05-08--q1...</td>\n",
+       "      <td>1-3</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>VUmc--1725--1051081--420909191--2020-05-08--q1...</td>\n",
+       "      <td>2-1</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>VUmc--1725--1051081--420909191--2020-05-08--q1...</td>\n",
+       "      <td>3-1</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5963</th>\n",
+       "      <td>VUmc--3892--1795740--414970053--2020-04-14--q1...</td>\n",
+       "      <td>2-29</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5964</th>\n",
+       "      <td>VUmc--3892--1795740--414970053--2020-04-14--q1...</td>\n",
+       "      <td>2-30</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5965</th>\n",
+       "      <td>VUmc--3892--1795740--414970053--2020-04-14--q1...</td>\n",
+       "      <td>2-31</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5966</th>\n",
+       "      <td>VUmc--3892--1795740--414970053--2020-04-14--q1...</td>\n",
+       "      <td>2-32</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>5967</th>\n",
+       "      <td>VUmc--3892--1795740--414970053--2020-04-14--q1...</td>\n",
+       "      <td>2-33</td>\n",
+       "      <td>_</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>5968 rows × 3 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                                                note_id sen_tok_id  \\\n",
+       "0     VUmc--1725--1051081--420909191--2020-05-08--q1...        1-1   \n",
+       "1     VUmc--1725--1051081--420909191--2020-05-08--q1...        1-2   \n",
+       "2     VUmc--1725--1051081--420909191--2020-05-08--q1...        1-3   \n",
+       "3     VUmc--1725--1051081--420909191--2020-05-08--q1...        2-1   \n",
+       "4     VUmc--1725--1051081--420909191--2020-05-08--q1...        3-1   \n",
+       "...                                                 ...        ...   \n",
+       "5963  VUmc--3892--1795740--414970053--2020-04-14--q1...       2-29   \n",
+       "5964  VUmc--3892--1795740--414970053--2020-04-14--q1...       2-30   \n",
+       "5965  VUmc--3892--1795740--414970053--2020-04-14--q1...       2-31   \n",
+       "5966  VUmc--3892--1795740--414970053--2020-04-14--q1...       2-32   \n",
+       "5967  VUmc--3892--1795740--414970053--2020-04-14--q1...       2-33   \n",
+       "\n",
+       "           annotation  \n",
+       "0     disregard\\_file  \n",
+       "1                   _  \n",
+       "2                   _  \n",
+       "3                   _  \n",
+       "4                   _  \n",
+       "...               ...  \n",
+       "5963                _  \n",
+       "5964                _  \n",
+       "5965                _  \n",
+       "5966                _  \n",
+       "5967                _  \n",
+       "\n",
+       "[5968 rows x 3 columns]"
+      ]
+     },
+     "execution_count": 204,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "name1=\"katsburg\"\n",
+    "name2=\"opsomer\"\n",
+    "\n",
+    "file1=\"IAA_\"+name1+\".tsv\"\n",
+    "df1 = pd.read_csv(file1,sep=\"\\t\")\n",
+    "df1.info()\n",
+    "df1.head()\n",
+    "df1['annotation'].fillna(\"_\")\n",
+    "\n",
+    "file2=\"IAA_\"+name2+\".tsv\"\n",
+    "df2 = pd.read_csv(file2,sep=\"\\t\")\n",
+    "df2.info()\n",
+    "df2.head()\n",
+    "df2['annotation'].fillna(\"_\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 205,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_token_ids (df):\n",
+    "    tokens=[]\n",
+    "    for token in df['sen_tok_id']:\n",
+    "        tokens.append(token)\n",
+    "    return tokens\n",
+    "\n",
+    "def clean_value (annotation):\n",
+    "    if type(annotation)!=str:\n",
+    "        clean=\"_\"\n",
+    "    else:\n",
+    "        clean = annotation\n",
+    "    ind = clean.find('[')\n",
+    "    if ind>0:\n",
+    "        clean=clean[:ind]\n",
+    "    return clean\n",
+    "\n",
+    "def clean_df(df):\n",
+    "    doublecount = 0\n",
+    "    for index, label in enumerate(df['annotation']):\n",
+    "        if type(label)==str:\n",
+    "            if label.find('|')!=-1:\n",
+    "                print(label)\n",
+    "                doublecount+=1 \n",
+    "        value=clean_value(label)\n",
+    "        df['annotation'].iloc[index]=value\n",
+    "    print('Length:', len(get_token_ids(df1)))\n",
+    "    print('Doubles:',doublecount)\n",
+    "    return df\n",
+    " "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 206,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "DF1\n",
+      "type\\_Implicit[4]|STM 3[5]|.B152: Stemming[6]\n",
+      "STM 3[1]|.B152: Stemming[2]\n",
+      ".D450: Lopen en zich verplaatsen[4]|FAC 4[5]\n",
+      ".D450: Lopen en zich verplaatsen[4]|FAC 4[5]\n",
+      ".B152: Stemming[1]|STM 3[2]\n",
+      "type\\_Implicit[3]|FAC 0[4]\n",
+      "type\\_Implicit[3]|FAC 0[4]\n",
+      "type\\_Implicit[3]|FAC 0[4]\n",
+      "type\\_Implicit[3]|FAC 0[4]\n",
+      "type\\_Implicit[3]|FAC 0[4]\n",
+      "type\\_Implicit[3]|FAC 0[4]|.D450: Lopen en zich verplaatsen[5]\n",
+      "STM 4[6]|.B152: Stemming[7]\n",
+      ".B455: Inspanningstolerantie[3]|INS 2[4]\n",
+      ".B455: Inspanningstolerantie[3]|INS 2[4]\n",
+      ".B455: Inspanningstolerantie[3]|INS 2[4]\n",
+      ".B152: Stemming[3]|STM 3[4]\n",
+      "STM 1[9]|.B152: Stemming[10]\n",
+      "STM 1[9]|.B152: Stemming[10]\n",
+      "STM 1[9]|.B152: Stemming[10]\n",
+      ".B455: Inspanningstolerantie[1]|.D450: Lopen en zich verplaatsen[2]\n",
+      ".B455: Inspanningstolerantie[1]|FAC 0[3]\n",
+      ".B455: Inspanningstolerantie[1]|FAC 0[3]\n",
+      "type\\_Implicit[2]|STM 3[3]|.B152: Stemming[4]\n",
+      "type\\_Implicit[2]|FAC 1[3]\n",
+      "type\\_Implicit[2]|FAC 1[3]\n",
+      "type\\_Implicit[2]|FAC 1[3]\n",
+      "Length: 5968\n",
+      "Doubles: 26\n",
+      "DF2\n",
+      ".B152: Stemming[1]|STM 2[2]\n",
+      ".B152: Stemming[1]|STM 3[2]\n",
+      ".D450: Lopen en zich verplaatsen[4]|FAC 4[5]\n",
+      ".B152: Stemming[1]|STM 3[2]\n",
+      ".B152: Stemming[1]|STM 3[2]\n",
+      "Length: 5968\n",
+      "Doubles: 5\n"
+     ]
+    }
+   ],
+   "source": [
+    "print('DF1')\n",
+    "df1= clean_df(df1)\n",
+    "print('DF2')\n",
+    "df2= clean_df(df2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 218,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def sentence_anno(df):\n",
+    "    sentence_label_dict={}\n",
+    "    for index, sen_tok in enumerate(df['sen_tok_id']):\n",
+    "        sen_id = sen_tok[:sen_tok.find('-')]\n",
+    "        label = df['annotation'].iloc[index]\n",
+    "        if sen_id in sentence_label_dict:\n",
+    "            sentence_label_dict[sen_id].append(label)\n",
+    "        else:\n",
+    "            sentence_label_dict[sen_id]=[label]\n",
+    "    return sentence_label_dict"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 220,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "212\n",
+      "212\n"
+     ]
+    }
+   ],
+   "source": [
+    "sentence_label_dict1 = sentence_anno(df1)\n",
+    "print(len(sentence_label_dict1))\n",
+    "sentence_label_dict2 = sentence_anno(df2)\n",
+    "print(len(sentence_label_dict1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 257,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_sentence_anno (sentence_dict):\n",
+    "    annos=[]\n",
+    "    for key, value in sentence_dict.items():\n",
+    "        #print(key, '->', value)\n",
+    "        minus = value.count(\"_\")\n",
+    "        if minus==len(value):\n",
+    "            annos.append(\"_\")\n",
+    "        else:\n",
+    "            for item in value:\n",
+    "                if item!=\"_\":\n",
+    "                    annos.append(item)\n",
+    "                    break\n",
+    "            ### we take the first value that is not \"_\"\n",
+    "    return annos      "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 258,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "212\n",
+      "212\n",
+      "{'stm\\\\_reaction', 'target', 'FAC 0', 'type\\\\_Implicit', '_', 'INS 1', '.B455: Inspanningstolerantie', 'FAC 1', 'type\\\\_Background', 'view\\\\_Third party', '.D840-859: Beroep en werk', 'disregard\\\\_file', 'view\\\\_Patient', '.B152: Stemming', 'info\\\\_Third party', 'STM 4', '.D450: Lopen en zich verplaatsen'}\n"
+     ]
+    }
+   ],
+   "source": [
+    "labels1 = get_sentence_anno(sentence_label_dict1)\n",
+    "labels2 = get_sentence_anno(sentence_label_dict2)\n",
+    "print(len(labels1))\n",
+    "print(len(labels2))\n",
+    "annotation_labels = set(labels1+labels2)\n",
+    "print(annotation_labels)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 259,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Kappa: 0.5198000468640163\n"
+     ]
+    }
+   ],
+   "source": [
+    "#kappa=cohen_kappa_score(labels1, labels2, weights='quadratic')\n",
+    "kappa=cohen_kappa_score(labels1, labels2)\n",
+    "print('Kappa:',kappa)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 260,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_kappa_for_label (df1, df2, label):\n",
+    "    labels1=[]\n",
+    "    labels2=[]\n",
+    "    for index, token in enumerate(df1['sen_tok_id']):\n",
+    "        label1=df1['annotation'].iloc[index]\n",
+    "        label2=df2['annotation'].iloc[index]\n",
+    "        if df1['sen_tok_id'].iloc[index]!=df2['sen_tok_id'].iloc[index]:\n",
+    "            print(df1['sen_tok_id'].iloc[index], df2['sen_tok_id'].iloc[index])\n",
+    "        else:\n",
+    "            if (label1==label):\n",
+    "                labels1.append(label1)\n",
+    "                labels2.append(label2)\n",
+    "            elif label2==label:\n",
+    "                labels1.append(label1)\n",
+    "                labels2.append(label2)\n",
+    "    kappa=cohen_kappa_score(labels1, labels2)\n",
+    "    return kappa"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 175,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "kappas={}\n",
+    "for label in annotation_labels:\n",
+    "    kappa=get_kappa_for_label(df1, df2, label)\n",
+    "    kappas[label]=kappa"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 176,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{   '.B152: Stemming': -0.16666666666666674,\n",
+      "    '.B455: Inspanningstolerantie': -0.5921052631578947,\n",
+      "    '.D450: Lopen en zich verplaatsen': 0.0,\n",
+      "    '.D840-859: Beroep en werk': 0.0,\n",
+      "    'FAC 0': 0.0,\n",
+      "    'FAC 1': 0.0,\n",
+      "    'FAC 2': 0.0,\n",
+      "    'INS 1': -0.48245614035087714,\n",
+      "    'STM 1': 0.0,\n",
+      "    'STM 3': 0.0,\n",
+      "    'STM 4': -0.20000000000000018,\n",
+      "    '_': -0.020038208222395548,\n",
+      "    'disregard\\\\_file': nan,\n",
+      "    'info\\\\_Third party': nan,\n",
+      "    'lop\\\\_hulpmiddel': 0.0,\n",
+      "    'stm\\\\_reaction': 0.0,\n",
+      "    'target': 0.0,\n",
+      "    'type\\\\_Background': -0.25168440546792237,\n",
+      "    'type\\\\_Implicit': 0.0,\n",
+      "    'view\\\\_Patient': 0.0,\n",
+      "    'view\\\\_Third party': 0.0}\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pprint\n",
+    "pp = pprint.PrettyPrinter(indent=4)\n",
+    "pp.pprint(kappas)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
