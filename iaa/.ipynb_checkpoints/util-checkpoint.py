@@ -85,40 +85,72 @@ def add_new_row_with_value (df, key, score, group):
     else:
         row = init_row(key)
         row[group]=score
-        df = df.append(row, ignore_index=True )
+        df = df.append(row, ignore_index=True)
     return df
 
 
-def get_kappa_for_label (dict1, dict2, label):
+def get_kappa_for_label (dict1, dict2, label, group):
     no_anno_cnt=0
-    
+    linemismatch_cnt = 0
     labels1=[]
     labels2=[]
+    groups=[]
+    keys=[]
+    ### key = the note_sentence_id, values = aggregated set of values from all tokens in that sentence
     for key, values1 in dict1.items():
         try:
             values2=dict2[key]
-            if values1=={'_'} & values1==values2:
-                labels1.append("_")
-                labels2.append("_")
+            if (values1=={'_'} and values2=={'_'}):
+                labels1.append(label1)
+                labels2.append(label2)
+                continue
+            ### we initialise with the first value
+            label1 = list(values1)[0]
+            label2 = list(values2)[0]
+            ### we check if the target label is listed in either set of values
+            for value in values1:
+                if (value==label):
+                    label1=value
+            for value in values2:
+                if (value==label):
+                    label2=value
+            ## We only append if either of the annotators annotated this sentence with the target label
+            if (label1==label) or label2==label:
                 no_anno_cnt+=1
-            else:
-                ### we initialise with the first value
-                label1 = list(values1)[0]
-                label2 = list(values2)[0]
-                ### we check if the target label is listed
-                for value in values1:
-                    if (value==label):
-                        label1=value
-                for value in values2:
-                    if (value==label):
-                        label2=value
-                if (label1==label) or label2==label:
-                    labels1.append(label1)
-                    labels2.append(label2)
+                labels1.append(label1)
+                labels2.append(label2)
+                keys.append(key)
+                groups.append(group)
         except:
-            print('Line error:', key)
-    
+            linemismatch_cnt+=1
+            #print('Line mismatch error:', key)
     #print('No annoations by both:', no_anno_cnt, ' Proportion of sentences:', no_anno_cnt/len(dict1.items()))          
-    kappa=cohen_kappa_score(labels1, labels2)
-    return kappa
+    kappa=-2
+    try:
+        kappa=cohen_kappa_score(labels1, labels2)
+    except:
+        print('kappa error')
+        
+    return kappa, no_anno_cnt, labels1, labels2, keys, groups
 
+
+ 
+def get_doc_labels (df):
+    doc_label_dict1={}
+    doc_label_dict2={}
+    for index, key in enumerate(df['Key']):
+        doc = key[:key.find('_')]
+        group = df['Group'].iloc[index]
+        label1 = df['label1'].iloc[index]
+        label2 = df['label2'].iloc[index]
+        if doc in doc_label_dict1:
+            doc_label_dict1[doc].append(label1)
+        else:
+            doc_label_dict1[doc]=[label1]
+        
+        if doc in doc_label_dict2:
+            doc_label_dict2[doc].append(label2)
+        else:
+            doc_label_dict2[doc]=[label2]
+    return doc_label_dict1, doc_label_dict2
+ 
