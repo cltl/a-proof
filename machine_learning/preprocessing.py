@@ -10,7 +10,7 @@ from utils import lightweightDataframe, completeDataframe, filterDataframe
 
 def prepareDataC(function, splitting = False, percentage = 100):   
     """
-    Reads train and test data, prepares data, trains SVM, predicts on test data, prints sklearn classification classification_report
+    Reads train and test data, prepares data, converts sentence representations
     """
     print(datetime.now())
     #define paths to train and test pickles    
@@ -126,7 +126,7 @@ def prepareDataC(function, splitting = False, percentage = 100):
 
 def prepareDataNC(function):
     """
-    Reads train and test data, prepares data, trains SVM, predicts on test data, prints sklearn classification classification_report
+    Reads train and test data, prepares data, converts sentence representations
     """
     print(datetime.now())
     #define paths to train and test pickles    
