@@ -6,7 +6,7 @@ This directory contains all the most-important code and results for the timeseri
 
 Everything is presented in documented [Jupyter notebooks](https://jupyter.org/) (with some outputs hidden to protect patient privacy). The notebooks, viewed statically, therefore allow a good overview of the code and data, without having to re-run them all.
 
-In particular, `timeseries_analysis.ipynb` and `final_analysis.ipynb` give a useful overview of the findings of this part of the pilot study.
+In particular, [timeseries_analysis.ipynb](/timeseries_analysis.ipynb) and [final_analysis.ipynb](/final_analysis.ipynb) give a useful overview of the findings of this part of the pilot study.
 
 ## Directory overview
 
