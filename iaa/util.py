@@ -133,6 +133,53 @@ def get_kappa_for_label (dict1, dict2, label, group):
         
     return kappa, no_anno_cnt, labels1, labels2, keys, groups
 
+def get_annotations_for_sentences (dict1, dict2, labels):
+    linemismatch_cnt = 0
+    labels1=[]
+    labels2=[]
+    print(len(dict1))
+    print(len(dict2))
+    ### key = the note_sentence_id, values = aggregated set of values from all tokens in that sentence
+    for key, valueset1 in dict1.items():
+        try:
+            valueset2=dict2[key]
+            if (valueset1=={'_'} and valueset2=={'_'}):
+                labels1.append('_')
+                labels2.append('_')
+                continue
+            for value1 in valueset1:
+                if value1 in labels:
+                    match = False
+                    for value2 in valueset2:
+                        if (value1==value2):
+                            labels1.append(value1)
+                            labels2.append(value2)
+                            match = True
+                            break
+                            
+                    if not match:
+                        for value2 in valueset2:
+                            if (value1[:3]==value2[:3]):
+                                labels1.append(value1)
+                                labels2.append(value2)
+                                match = True
+                                break
+                    
+                    if not match:
+                        labels1.append(value1)
+                        for value2 in valueset2:
+                            if value2 in labels:
+                                labels2.append(value2)
+                                match = True
+                                break
+                        if not match:
+                            labels2.append('X')
+        except:
+            linemismatch_cnt+=1
+            #print('Line mismatch error:', key)
+    print('Proportion of line mismatches:', linemismatch_cnt/len(dict1.items()))          
+        
+    return labels1, labels2
 
  
 def get_doc_labels (df):
